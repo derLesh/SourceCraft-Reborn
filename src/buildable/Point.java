@@ -1,84 +1,89 @@
 package buildable;
 
-public class Point implements Comparable {
+public class Point implements Comparable
+{
   public static final Point DEFAULT = new Point();
-  
   public double x;
   public double y;
   public double z;
-  
+
   public double getX()
   {
-    return x;
+    return this.x;
   }
-  
-  public double getY() {
-    return y;
+
+  public double getY()
+  {
+    return this.y;
   }
-  
-  public double getZ() {
-    return z;
+
+  public double getZ()
+  {
+    return this.z;
   }
-  
-  public int getPosX() {
-    return (int)x;
+
+  public int getPosX()
+  {
+    return (int)this.x;
   }
-  
-  public int getPosY() {
-    return (int)y;
+
+  public int getPosY()
+  {
+    return (int)this.y;
   }
-  
-  public int getPosZ() {
-    return (int)z;
+
+  public int getPosZ()
+  {
+    return (int)this.z;
   }
-  
-  public Point() {
-    x = 0.0D;
-    y = 0.0D;
-    z = 0.0D;
+
+  public Point()
+  {
+    this.x = 0.0D;
+    this.y = 0.0D;
+    this.z = 0.0D;
   }
-  
-  public Point(double x, double y, double z) {
+
+  public Point(double x, double y, double z)
+  {
     this.x = x;
     this.y = y;
     this.z = z;
   }
-  
-  public Point(int x, int y, int z) {
+
+  public Point(int x, int y, int z)
+  {
     this.x = x;
     this.y = y;
     this.z = z;
   }
-  
-  public Point set(Point p) {
-    x = p.getX();
-    y = p.getY();
-    z = p.getZ();
+
+  public Point set(Point p)
+  {
+    this.x = p.getX();
+    this.y = p.getY();
+    this.z = p.getZ();
     return this;
   }
-  
-  public Point set(int x, int y, int z) {
+
+  public Point set(int x, int y, int z)
+  {
     this.x = x;
     this.y = y;
     this.z = z;
     return this;
   }
-  
-
-
-
-
-
 
   public Point getOffsetCopy(double x, double y, double z)
   {
     return new Point(this.x + x, this.y + y, this.z + z);
   }
-  
-  public Point getOffsetCopy(int x, int y, int z) {
+
+  public Point getOffsetCopy(int x, int y, int z)
+  {
     return new Point(this.x + x, this.y + y, this.z + z);
   }
-  
+
   public String getString()
   {
     String aus = new Double(getX()).toString() + " ";
@@ -86,94 +91,101 @@ public class Point implements Comparable {
     aus = aus + new Double(getZ()).toString();
     return aus;
   }
-  
-  public String getPrint() {
-    return x + " " + y + " " + z;
+
+  public String getPrint()
+  {
+    return this.x + " " + this.y + " " + this.z;
   }
-  
+
   public Point scale(int factor)
   {
-    x *= factor;
-    y *= factor;
-    z *= factor;
+    this.x *= factor;
+    this.y *= factor;
+    this.z *= factor;
     return this;
   }
-  
-  public Point scaleCopy(int factor) {
-    return new Point(x * factor, y * factor, z * factor);
+
+  public Point scaleCopy(int factor)
+  {
+    return new Point(this.x * factor, this.y * factor, this.z * factor);
   }
-  
-  public void moveX(double distance) {
-    x += distance;
+
+  public void moveX(double distance)
+  {
+    this.x += distance;
   }
-  
-  public void moveY(double distance) {
-    y += distance;
+
+  public void moveY(double distance)
+  {
+    this.y += distance;
   }
-  
-  public void moveZ(double distance) {
-    z += distance;
+
+  public void moveZ(double distance)
+  {
+    this.z += distance;
   }
-  
-  public void move(int x, int y, int z) {
+
+  public void move(int x, int y, int z)
+  {
     this.x += x;
     this.y += y;
     this.z += z;
   }
-  
-  public Point moveInHammer(double xDistance, double yDistance, double zDistance) {
+
+  public Point moveInHammer(double xDistance, double yDistance, double zDistance)
+  {
     moveX(xDistance);
     moveY(yDistance);
     moveZ(zDistance);
     return this;
   }
-  
-  public int getRoomSizeTo(Point target) {
-    return (int)((x - x) * (y - y) * (z - z));
+
+  public int getRoomSizeTo(Point target)
+  {
+    return (int)((target.x - this.x) * (target.y - this.y) * (target.z - this.z));
   }
-  
-  public Point copy() {
-    return new Point(x, y, z);
+
+  public Point copy()
+  {
+    return new Point(this.x, this.y, this.z);
   }
-  
+
   public int compareTo(Object object)
   {
-    if ((object instanceof Point)) {
+    if ((object instanceof Point))
+    {
       Point other = (Point)object;
-      if ((x == x) && (y == y) && (z == z)) {
+      if ((this.x == other.x) && (this.y == other.y) && (this.z == other.z)) {
         return 0;
       }
-      
-      if (x < x) {
+      if (this.x < other.x) {
         return -1;
       }
-      
-      if (x == x) {
-        if (y < y) {
+      if (this.x == other.x)
+      {
+        if (this.y < other.y) {
           return -1;
         }
-        
-        if ((y == y) && (z < z)) {
+        if ((this.y == other.y) && (this.z < other.z)) {
           return -1;
         }
       }
-      
-
-
       return 1;
     }
     return Integer.MAX_VALUE;
   }
-  
-  public boolean smaller(Point other) {
-    return (x < x) && (y < y) && (z < z);
+
+  public boolean smaller(Point other)
+  {
+    return (this.x < other.x) && (this.y < other.y) && (this.z < other.z);
   }
-  
+
   public boolean equals(Object object)
   {
-    if ((object instanceof Point)) {
+    if ((object instanceof Point))
+    {
       Point other = (Point)object;
-      return (x == x) && (y == y) && (z == z);
+      return (this.x == other.x) && (this.y == other.y) && (this.z == other.z);
     }
     return false;
   }

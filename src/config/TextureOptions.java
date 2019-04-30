@@ -4,10 +4,6 @@ import basic.Console;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
-
-
-
-
 public class TextureOptions
 {
   private static final int defaultScale = 128;
@@ -15,7 +11,7 @@ public class TextureOptions
   private String version;
   private String scale;
   private String textureVersion;
-  
+
   public TextureOptions(String file)
   {
     try
@@ -23,44 +19,52 @@ public class TextureOptions
       TextureOptionsReader reader = new TextureOptionsReader(file, this);
       reader.readTextureOptions();
     }
-    catch (FileNotFoundException ex) {
+    catch (FileNotFoundException ex)
+    {
       Console.info("Cannot find Texture-Options.");
     }
   }
-  
+
   public int getTextureVersion()
   {
-    try {
-      return new Integer(textureVersion).intValue();
+    try
+    {
+      return new Integer(this.textureVersion).intValue();
     }
     catch (NumberFormatException e) {}
     return 0;
   }
-  
+
   public int getScale()
   {
-    try {
-      return new Integer(scale).intValue();
+    try
+    {
+      return new Integer(this.scale).intValue();
     }
-    catch (NumberFormatException e) {
-      Console.warning("Texture-Options does not specify a scale. Using default scale."); }
+    catch (NumberFormatException e)
+    {
+      Console.warning("Texture-Options does not specify a scale. Using default scale.");
+    }
     return 128;
   }
-  
+
   public boolean isNewerThan(TextureOptions other)
   {
     return getTextureVersion() > other.getTextureVersion();
   }
-  
-  public void setScale(String scale) {
+
+  public void setScale(String scale)
+  {
     this.scale = scale;
   }
-  
-  public void setTextureVersion(String textureVersion) {
+
+  public void setTextureVersion(String textureVersion)
+  {
     this.textureVersion = textureVersion;
   }
-  
-  public void setVersion(String version) {
+
+  public void setVersion(String version)
+  {
     this.version = version;
   }
 }

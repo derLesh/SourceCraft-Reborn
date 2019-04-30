@@ -3,16 +3,6 @@ package minecraft;
 import java.io.PrintStream;
 import java.util.Stack;
 
-
-
-
-
-
-
-
-
-
-
 public class Chunk
 {
   private final byte[][][] material;
@@ -22,30 +12,31 @@ public class Chunk
   private static final int chunkSizeY = 126;
   byte[] map;
   Stack<Byte> s = new Stack();
-  
-  public Chunk(byte[][][] newMaterial, byte[][][] newData) {
+
+  public Chunk(byte[][][] newMaterial, byte[][][] newData)
+  {
     if ((!sizesFitChunk(newMaterial)) || (!sizesFitChunk(newData))) {
       System.err.println("WARNING: given byte[][][] don't have chunk-size!");
     }
-    material = newMaterial;
-    data = newData;
+    this.material = newMaterial;
+    this.data = newData;
   }
-  
+
   public byte[] getData()
   {
-    s = new Stack();
+    this.s = new Stack();
     getDataRun();
-    byte[] result = new byte[s.size()];
-    for (int i = s.size() - 1; i >= 0; i--) {
-      result[i] = ((Byte)s.pop()).byteValue();
+    byte[] result = new byte[this.s.size()];
+    for (int i = this.s.size() - 1; i >= 0; i--) {
+      result[i] = ((Byte)this.s.pop()).byteValue();
     }
     return result;
   }
-  
-  private void getDataRun() {
+
+  private void getDataRun()
+  {
     add(10);
   }
-  
 
   private void writeTitle(String text)
   {
@@ -56,23 +47,24 @@ public class Chunk
       add(textBytes[i]);
     }
   }
-  
-  private void add(byte add) {
-    s.push(Byte.valueOf(add));
+
+  private void add(byte add)
+  {
+    this.s.push(Byte.valueOf(add));
   }
-  
-  private void add(int add) {
-    s.push(Byte.valueOf((byte)add));
+
+  private void add(int add)
+  {
+    this.s.push(Byte.valueOf((byte)add));
   }
-  
-  public static boolean sizesFitChunk(byte[][][] blockData) {
-    if ((blockData.length == 16) && 
-      (blockData[0].length == 126) && 
-      (blockData[0][0].length == 16)) {
+
+  public static boolean sizesFitChunk(byte[][][] blockData)
+  {
+    if ((blockData.length == 16) &&
+            (blockData[0].length == 126) &&
+            (blockData[0][0].length == 16)) {
       return true;
     }
-    
-
     return false;
   }
 }

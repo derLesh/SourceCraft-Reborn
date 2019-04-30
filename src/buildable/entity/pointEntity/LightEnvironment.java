@@ -6,58 +6,58 @@ import buildable.Point;
 import java.io.IOException;
 import java.io.Writer;
 
-public class LightEnvironment
-  extends PointEntity
+public class Light
+        extends PointEntity
 {
-  private Color light;
-  private Color ambient;
-  
-  public LightEnvironment(Color light, Color ambient)
+  private Color color;
+  private int distance50;
+  private int distance100;
+
+  public Light(Color color, int distance50, int distance100)
   {
-    this(Point.DEFAULT, light, ambient);
+    this(Point.DEFAULT, color, distance50, distance100);
   }
-  
-  public LightEnvironment(Point origin, Color light, Color ambient) {
+
+  public Light(Point origin, Color color, int distance50, int distance100)
+  {
     super(origin);
-    assert (light != null);
-    assert (ambient != null);
-    this.light = light.copy();
-    this.ambient = ambient.copy();
-    assert (this.light != null);
-    assert (this.ambient != null);
+    this.color = color;
+    this.distance50 = distance50;
+    this.distance100 = distance100;
   }
-  
-  public LightEnvironment create(Point origin)
+
+  public Light create(Point origin)
   {
-    assert (light != null);
-    assert (ambient != null);
-    return new LightEnvironment(origin, light.copy(), ambient.copy());
+    return new Light(origin, this.color, this.distance50, this.distance100);
   }
-  
-  public void writeVmf(Counter counter, Writer w)
-    throws IOException
+
+  public void writeVmf(Counter cc, Writer w)
+          throws IOException
   {
-    w.write("entity\n");
-    w.write("{\n");
-    w.write("\t  \"id\" \"" + counter.getBrushId() + "\"\n");
-    w.write("\t  \"classname\" \"light_environment\"\n");
-    w.write("\t  \"_ambient\" \"" + ambient.red + " " + ambient.green + " " + ambient.blue + " " + ambient.alpha + "\"\n");
-    w.write("\t  \"_ambientHDR\" \"-1 -1 -1 1\"\n");
-    w.write("\t  \"_AmbientScaleHDR\" \"1\"\n");
-    w.write("\t  \"_light\" \"" + light.red + " " + light.green + " " + light.blue + " " + light.alpha + "\"\n");
-    w.write("\t  \"_lightHDR\" \"-1 -1 -1 1\"\n");
-    w.write("\t  \"_lightscaleHDR\" \"1\"\n");
-    w.write("\t  \"angles\" \"-70 356 0\"\n");
-    w.write("\t  \"pitch\" \"-70\"\n");
-    w.write("\t  \"SunSpreadAngle\" \"0\"\n");
-    w.write("\t  \"origin\" \"" + p.getString() + "\"\n");
-    w.write("\t  editor\n");
-    w.write("\t  {\n");
-    w.write("\t\t  \"color\" \"220 30 220\"\n");
-    w.write("\t\t  \"visgroupshown\" \"1\"\n");
-    w.write("\t\t  \"visgroupautoshown\" \"1\"\n");
-    w.write("\t\t  \"logicalpos\" \"[0 0]\"\n");
-    w.write("\t  }\n");
-    w.write("}\n");
+    w.write("entity");
+    w.write("\n{");
+    w.write("\n\t  \"id\" \"" + cc.getBrushId() + "\"");
+    w.write("\n\t  \"classname\" \"light\"");
+    w.write("\n\t  \"_constant_attn\" \"0\"");
+    w.write("\n\t  \"_distance\" \"0\"");
+    w.write("\n\t  \"_fifty_percent_distance\" \"" + this.distance50 + "\"");
+    w.write("\n\t  \"_hardfalloff\" \"0\"");
+    w.write("\n\t  \"_light\" \"" + this.color.getRed() + " " + this.color.getGreen() + " " + this.color.getBlue() + " " + this.color.getAlpha() + "\"");
+    w.write("\n\t  \"_lightHDR\" \"-1 -1 -1 1\"");
+    w.write("\n\t  \"_lightscaleHDR\" \"1\"");
+    w.write("\n\t  \"_linear_attn\" \"0\"");
+    w.write("\n\t  \"_quadratic_attn\" \"1\"");
+    w.write("\n\t  \"_zero_percent_distance\" \"" + this.distance100 + "\"");
+    w.write("\n\t  \"spawnflags\" \"0\"");
+    w.write("\n\t  \"style\" \"0\"");
+    w.write("\t  \"origin\" \"" + this.p.getString() + "\"\n");
+    w.write("\n\t  editor");
+    w.write("\n\t  {");
+    w.write("\n\t\t  \"color\" \"220 30 220\"");
+    w.write("\n\t\t  \"visgroupshown\" \"1\"");
+    w.write("\n\t\t  \"visgroupautoshown\" \"1\"");
+    w.write("\n\t\t  \"logicalpos\" \"[0 0]\"");
+    w.write("\n\t  }");
+    w.write("\n}");
   }
 }

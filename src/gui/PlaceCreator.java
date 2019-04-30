@@ -1,23 +1,40 @@
 package gui;
 
+import config.Config;
 import config.Place;
+import java.awt.Color;
+import java.awt.Container;
+import java.awt.Cursor;
+import java.awt.Dimension;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.GroupLayout;
+import javax.swing.GroupLayout.Alignment;
 import javax.swing.GroupLayout.ParallelGroup;
 import javax.swing.GroupLayout.SequentialGroup;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JDialog;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JSpinner;
 import javax.swing.JTextField;
+import javax.swing.LayoutStyle.ComponentPlacement;
 
-public class PlaceCreator extends javax.swing.JDialog
+public class PlaceCreator
+        extends JDialog
 {
   private static final String windowTitle = "Place Editor";
-  private static final java.awt.Color colorFormatIncorrect = java.awt.Color.PINK;
-  private static final java.awt.Color colorFormatWarning = java.awt.Color.LIGHT_GRAY;
-  private static final java.awt.Color colorFormatCorrect = java.awt.Color.WHITE;
+  private static final Color colorFormatIncorrect = Color.PINK;
+  private static final Color colorFormatWarning = Color.LIGHT_GRAY;
+  private static final Color colorFormatCorrect = Color.WHITE;
   private GUI parent;
   private Place place;
-  private config.Config config;
+  private Config config;
   private boolean warnIfOverwrite;
   private String[] worldOptions;
-  private javax.swing.DefaultComboBoxModel cmbWorldOptions;
+  private DefaultComboBoxModel cmbWorldOptions;
   private String placeName;
   private int xPos = 0;
   private int zPos = 0;
@@ -25,358 +42,297 @@ public class PlaceCreator extends javax.swing.JDialog
   private int yMax = 120;
   private int numberX = 80;
   private int numberZ = 80;
-  private javax.swing.JButton jButton1;
-  private javax.swing.JButton jButtonCancel;
-  
-  public PlaceCreator(GUI parent, config.Config config, String placeName) {
+  private JButton jButton1;
+  private JButton jButtonCancel;
+  private JButton jButtonDelete;
+  private JButton jButtonSave;
+  private JComboBox jComboBoxWorld;
+  private JLabel jLabel1;
+  private JLabel jLabel2;
+  private JLabel jLabel3;
+  private JSpinner jSpinnerNumX;
+  private JSpinner jSpinnerNumZ;
+  private JTextField jTextField3;
+  private JTextField jTextFieldName;
+  private JTextField jTextFieldXPos;
+  private JTextField jTextFieldYMax;
+  private JTextField jTextFieldYMin;
+  private JTextField jTextFieldZPos;
+
+  public PlaceCreator(GUI parent, Config config, String placeName)
+  {
     super(parent, true);
-    place = null;
-    
+    this.place = null;
+
     this.parent = parent;
-    warnIfOverwrite = true;
+    this.warnIfOverwrite = true;
     this.config = config;
     this.placeName = placeName;
-    worldOptions = config.getPossibleWorlds();
-    cmbWorldOptions = new javax.swing.DefaultComboBoxModel(worldOptions);
+    this.worldOptions = config.getPossibleWorlds();
+    this.cmbWorldOptions = new DefaultComboBoxModel(this.worldOptions);
     initComponents();
-    jButtonDelete.setVisible(false);
+    this.jButtonDelete.setVisible(false);
   }
-  
-  public PlaceCreator(GUI parent, config.Config config, Place place)
+
+  public PlaceCreator(GUI parent, Config config, Place place)
   {
     super(parent, true);
     this.place = place;
-    
+
     this.parent = parent;
-    warnIfOverwrite = true;
+    this.warnIfOverwrite = true;
     this.config = config;
-    worldOptions = config.getPossibleWorlds();
-    cmbWorldOptions = new javax.swing.DefaultComboBoxModel(worldOptions);
-    xPos = place.getX();
-    zPos = place.getZ();
-    yMin = place.getYStart();
-    yMax = place.getYEnd();
-    numberX = place.getNumX();
-    numberZ = place.getNumZ();
-    placeName = place.getName();
+    this.worldOptions = config.getPossibleWorlds();
+    this.cmbWorldOptions = new DefaultComboBoxModel(this.worldOptions);
+    this.xPos = place.getX();
+    this.zPos = place.getZ();
+    this.yMin = place.getYStart();
+    this.yMax = place.getYEnd();
+    this.numberX = place.getNumX();
+    this.numberZ = place.getNumZ();
+    this.placeName = place.getName();
     this.config.deletePlace(place);
     initComponents();
-    
 
-    jComboBoxWorld.setSelectedItem(place.getWorld());
+    this.jComboBoxWorld.setSelectedItem(place.getWorld());
   }
-  
-  private boolean askToOverwrite() {
+
+  private boolean askToOverwrite()
+  {
     Object[] options = { "Yes", "No" };
-    int n = javax.swing.JOptionPane.showOptionDialog(null, "A place called \"" + jTextFieldName.getText() + "\" alread exists. Do you want to overwrte?", "Place already exists", 1, -1, null, options, options[1]);
-    
-
-
-
-
-
-
+    int n = JOptionPane.showOptionDialog(null, "A place called \"" + this.jTextFieldName.getText() + "\" alread exists. Do you want to overwrte?", "Place already exists", 1, -1, null, options, options[1]);
     if (n == 0) {
       return true;
     }
     return false;
   }
-  
-  private void createNewPlace() {
-    place = new Place(jTextFieldName.getText());
-    place.setX(new Integer(jTextFieldXPos.getText()).intValue());
-    place.setZ(new Integer(jTextFieldZPos.getText()).intValue());
-    place.setYStart(new Integer(jTextFieldYMin.getText()).intValue());
-    place.setYEnd(new Integer(jTextFieldYMax.getText()).intValue());
-    place.setNumX(((Integer)jSpinnerNumX.getValue()).intValue());
-    place.setNumZ(((Integer)jSpinnerNumZ.getValue()).intValue());
-    place.setWorld((String)jComboBoxWorld.getSelectedItem());
-    config.addPlace(place);
+
+  private void createNewPlace()
+  {
+    this.place = new Place(this.jTextFieldName.getText());
+    this.place.setX(new Integer(this.jTextFieldXPos.getText()).intValue());
+    this.place.setZ(new Integer(this.jTextFieldZPos.getText()).intValue());
+    this.place.setYStart(new Integer(this.jTextFieldYMin.getText()).intValue());
+    this.place.setYEnd(new Integer(this.jTextFieldYMax.getText()).intValue());
+    this.place.setNumX(((Integer)this.jSpinnerNumX.getValue()).intValue());
+    this.place.setNumZ(((Integer)this.jSpinnerNumZ.getValue()).intValue());
+    this.place.setWorld((String)this.jComboBoxWorld.getSelectedItem());
+    this.config.addPlace(this.place);
   }
-  
-  private void writeOldPlace() {
-    if (place != null) {
-      config.addPlace(place);
+
+  private void writeOldPlace()
+  {
+    if (this.place != null) {
+      this.config.addPlace(this.place);
     }
   }
-  
-  private String makeName(String name) {
-    if (name.equals("")) {
+
+  private String makeName(String name)
+  {
+    if (name.equals(""))
+    {
       name = "unnamed";
       int index = 2;
-      while (config.getPlace(name) != null) {
+      while (this.config.getPlace(name) != null)
+      {
         name = "unnamed(" + index + ")";
         index++;
       }
     }
     return name;
   }
-  
-  private Place getConflictPlace(String placeName) {
-    Place conflictPlace = config.getPlace(placeName);
-    if (place != null) {
-      if (place.getName().equals(placeName)) {
+
+  private Place getConflictPlace(String placeName)
+  {
+    Place conflictPlace = this.config.getPlace(placeName);
+    if (this.place != null)
+    {
+      if (this.place.getName().equals(placeName)) {
         return null;
       }
-      
-      if (conflictPlace == place) {
+      if (conflictPlace == this.place) {
         return conflictPlace;
       }
       return null;
     }
-    
-
     return conflictPlace;
   }
-  
 
-  private javax.swing.JButton jButtonDelete;
-  
-  private javax.swing.JButton jButtonSave;
-  private javax.swing.JComboBox jComboBoxWorld;
-  private javax.swing.JLabel jLabel1;
-  private javax.swing.JLabel jLabel2;
-  private javax.swing.JLabel jLabel3;
   private void initComponents()
   {
-    jTextField3 = new JTextField();
-    jTextFieldName = new JTextField();
-    jLabel1 = new javax.swing.JLabel();
-    jTextFieldZPos = new JTextField();
-    jTextFieldXPos = new JTextField();
-    jLabel2 = new javax.swing.JLabel();
-    jTextFieldYMax = new JTextField();
-    jTextFieldYMin = new JTextField();
-    jLabel3 = new javax.swing.JLabel();
-    jSpinnerNumZ = new javax.swing.JSpinner();
-    jSpinnerNumX = new javax.swing.JSpinner();
-    jButtonSave = new javax.swing.JButton();
-    jButtonCancel = new javax.swing.JButton();
-    jComboBoxWorld = new javax.swing.JComboBox();
-    jButton1 = new javax.swing.JButton();
-    jButtonDelete = new javax.swing.JButton();
-    
-    jTextField3.setText("jTextField3");
-    
+    this.jTextField3 = new JTextField();
+    this.jTextFieldName = new JTextField();
+    this.jLabel1 = new JLabel();
+    this.jTextFieldZPos = new JTextField();
+    this.jTextFieldXPos = new JTextField();
+    this.jLabel2 = new JLabel();
+    this.jTextFieldYMax = new JTextField();
+    this.jTextFieldYMin = new JTextField();
+    this.jLabel3 = new JLabel();
+    this.jSpinnerNumZ = new JSpinner();
+    this.jSpinnerNumX = new JSpinner();
+    this.jButtonSave = new JButton();
+    this.jButtonCancel = new JButton();
+    this.jComboBoxWorld = new JComboBox();
+    this.jButton1 = new JButton();
+    this.jButtonDelete = new JButton();
+
+    this.jTextField3.setText("jTextField3");
+
     setDefaultCloseOperation(2);
     setTitle("Place Editor");
-    
-    jTextFieldName.setText(placeName);
-    
-    jLabel1.setText("(X,Z)-Position");
-    
-    jTextFieldZPos.setText(new Integer(zPos).toString());
-    jTextFieldZPos.setMinimumSize(new java.awt.Dimension(72, 20));
-    
-    jTextFieldXPos.setText(new Integer(xPos).toString());
-    jTextFieldXPos.setCursor(new java.awt.Cursor(2));
-    jTextFieldXPos.setMinimumSize(new java.awt.Dimension(72, 20));
-    
-    jLabel2.setText("(Ymin,Ymax)-Height");
-    
-    jTextFieldYMax.setText(new Integer(yMax).toString());
-    
-    jTextFieldYMin.setText(new Integer(yMin).toString());
-    
-    jLabel3.setText("(X,Z)-Size");
-    
-    jSpinnerNumZ.setValue(Integer.valueOf(numberZ));
-    
-    jSpinnerNumX.setValue(Integer.valueOf(numberX));
-    
-    jButtonSave.setText("Save");
-    jButtonSave.addActionListener(new java.awt.event.ActionListener() {
-      public void actionPerformed(java.awt.event.ActionEvent evt) {
+
+    this.jTextFieldName.setText(this.placeName);
+
+    this.jLabel1.setText("(X,Z)-Position");
+
+    this.jTextFieldZPos.setText(new Integer(this.zPos).toString());
+    this.jTextFieldZPos.setMinimumSize(new Dimension(72, 20));
+
+    this.jTextFieldXPos.setText(new Integer(this.xPos).toString());
+    this.jTextFieldXPos.setCursor(new Cursor(2));
+    this.jTextFieldXPos.setMinimumSize(new Dimension(72, 20));
+
+    this.jLabel2.setText("(Ymin,Ymax)-Height");
+
+    this.jTextFieldYMax.setText(new Integer(this.yMax).toString());
+
+    this.jTextFieldYMin.setText(new Integer(this.yMin).toString());
+
+    this.jLabel3.setText("(X,Z)-Size");
+
+    this.jSpinnerNumZ.setValue(Integer.valueOf(this.numberZ));
+
+    this.jSpinnerNumX.setValue(Integer.valueOf(this.numberX));
+
+    this.jButtonSave.setText("Save");
+    this.jButtonSave.addActionListener(new ActionListener()
+    {
+      public void actionPerformed(ActionEvent evt)
+      {
         PlaceCreator.this.jButtonSaveActionPerformed(evt);
       }
-      
     });
-    jButtonCancel.setText("Cancel");
-    jButtonCancel.addActionListener(new java.awt.event.ActionListener() {
-      public void actionPerformed(java.awt.event.ActionEvent evt) {
+    this.jButtonCancel.setText("Cancel");
+    this.jButtonCancel.addActionListener(new ActionListener()
+    {
+      public void actionPerformed(ActionEvent evt)
+      {
         PlaceCreator.this.jButtonCancelActionPerformed(evt);
       }
-      
     });
-    jComboBoxWorld.setMaximumRowCount(16);
-    jComboBoxWorld.setModel(cmbWorldOptions);
-    jComboBoxWorld.setSelectedItem(worldOptions[0]);
-    jComboBoxWorld.setAutoscrolls(true);
-    jComboBoxWorld.setMaximumSize(new java.awt.Dimension(28, 20));
-    
-    jButton1.setText("...");
-    jButton1.setEnabled(false);
-    
-    jButtonDelete.setText("Delete");
-    jButtonDelete.addActionListener(new java.awt.event.ActionListener() {
-      public void actionPerformed(java.awt.event.ActionEvent evt) {
+    this.jComboBoxWorld.setMaximumRowCount(16);
+    this.jComboBoxWorld.setModel(this.cmbWorldOptions);
+    this.jComboBoxWorld.setSelectedItem(this.worldOptions[0]);
+    this.jComboBoxWorld.setAutoscrolls(true);
+    this.jComboBoxWorld.setMaximumSize(new Dimension(28, 20));
+
+    this.jButton1.setText("...");
+    this.jButton1.setEnabled(false);
+
+    this.jButtonDelete.setText("Delete");
+    this.jButtonDelete.addActionListener(new ActionListener()
+    {
+      public void actionPerformed(ActionEvent evt)
+      {
         PlaceCreator.this.jButtonDeleteActionPerformed(evt);
       }
-      
     });
     GroupLayout layout = new GroupLayout(getContentPane());
     getContentPane().setLayout(layout);
-    layout.setHorizontalGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup().addContainerGap().addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING).addComponent(jTextFieldName, javax.swing.GroupLayout.Alignment.LEADING, -1, 338, 32767).addGroup(layout.createSequentialGroup().addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addComponent(jLabel1).addComponent(jLabel3).addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING, -1, 116, 32767)).addGap(71, 71, 71).addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false).addComponent(jSpinnerNumX).addComponent(jTextFieldYMin).addComponent(jTextFieldXPos, -2, 65, 32767)).addGap(7, 7, 7).addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false).addComponent(jTextFieldYMax, javax.swing.GroupLayout.Alignment.LEADING).addComponent(jTextFieldZPos, javax.swing.GroupLayout.Alignment.LEADING, -1, -1, 32767).addComponent(jSpinnerNumZ, -1, 72, 32767))).addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup().addComponent(jComboBoxWorld, 0, 305, 32767).addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED).addComponent(jButton1, -2, 27, -2)).addGroup(layout.createSequentialGroup().addComponent(jButtonDelete).addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED).addComponent(jButtonSave).addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED).addComponent(jButtonCancel))).addContainerGap()));
-    
+    layout.setHorizontalGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING).addGroup(GroupLayout.Alignment.TRAILING, layout.createSequentialGroup().addContainerGap().addGroup(layout.createParallelGroup(GroupLayout.Alignment.TRAILING).addComponent(this.jTextFieldName, GroupLayout.Alignment.LEADING, -1, 338, 32767).addGroup(layout.createSequentialGroup().addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING).addComponent(this.jLabel1).addComponent(this.jLabel3).addComponent(this.jLabel2, GroupLayout.Alignment.TRAILING, -1, 116, 32767)).addGap(71, 71, 71).addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING, false).addComponent(this.jSpinnerNumX).addComponent(this.jTextFieldYMin).addComponent(this.jTextFieldXPos, -2, 65, 32767)).addGap(7, 7, 7).addGroup(layout.createParallelGroup(GroupLayout.Alignment.TRAILING, false).addComponent(this.jTextFieldYMax, GroupLayout.Alignment.LEADING).addComponent(this.jTextFieldZPos, GroupLayout.Alignment.LEADING, -1, -1, 32767).addComponent(this.jSpinnerNumZ, -1, 72, 32767))).addGroup(GroupLayout.Alignment.LEADING, layout.createSequentialGroup().addComponent(this.jComboBoxWorld, 0, 305, 32767).addPreferredGap(LayoutStyle.ComponentPlacement.RELATED).addComponent(this.jButton1, -2, 27, -2)).addGroup(layout.createSequentialGroup().addComponent(this.jButtonDelete).addPreferredGap(LayoutStyle.ComponentPlacement.RELATED).addComponent(this.jButtonSave).addPreferredGap(LayoutStyle.ComponentPlacement.RELATED).addComponent(this.jButtonCancel))).addContainerGap()));
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    layout.setVerticalGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addGroup(layout.createSequentialGroup().addContainerGap().addComponent(jTextFieldName, -2, -1, -2).addGap(9, 9, 9).addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE).addComponent(jComboBoxWorld, -2, -1, -2).addComponent(jButton1)).addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED).addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE).addComponent(jTextFieldZPos, -2, -1, -2).addComponent(jTextFieldXPos, -2, -1, -2).addComponent(jLabel1)).addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED).addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE).addComponent(jLabel2).addComponent(jTextFieldYMax, -2, -1, -2).addComponent(jTextFieldYMin, -2, -1, -2)).addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED).addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE, false).addComponent(jSpinnerNumZ, -2, -1, -2).addComponent(jSpinnerNumX, -2, -1, -2).addComponent(jLabel3)).addGap(13, 13, 13).addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE).addComponent(jButtonCancel).addComponent(jButtonSave).addComponent(jButtonDelete)).addContainerGap()));
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    layout.setVerticalGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING).addGroup(layout.createSequentialGroup().addContainerGap().addComponent(this.jTextFieldName, -2, -1, -2).addGap(9, 9, 9).addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE).addComponent(this.jComboBoxWorld, -2, -1, -2).addComponent(this.jButton1)).addPreferredGap(LayoutStyle.ComponentPlacement.RELATED).addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE).addComponent(this.jTextFieldZPos, -2, -1, -2).addComponent(this.jTextFieldXPos, -2, -1, -2).addComponent(this.jLabel1)).addPreferredGap(LayoutStyle.ComponentPlacement.RELATED).addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE).addComponent(this.jLabel2).addComponent(this.jTextFieldYMax, -2, -1, -2).addComponent(this.jTextFieldYMin, -2, -1, -2)).addPreferredGap(LayoutStyle.ComponentPlacement.RELATED).addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE, false).addComponent(this.jSpinnerNumZ, -2, -1, -2).addComponent(this.jSpinnerNumX, -2, -1, -2).addComponent(this.jLabel3)).addGap(13, 13, 13).addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE).addComponent(this.jButtonCancel).addComponent(this.jButtonSave).addComponent(this.jButtonDelete)).addContainerGap()));
 
     pack();
   }
-  
-  private void jButtonSaveActionPerformed(java.awt.event.ActionEvent evt) {
-    placeName = jTextFieldName.getText();
-    if (fieldsOk()) {
+
+  private void jButtonSaveActionPerformed(ActionEvent evt)
+  {
+    this.placeName = this.jTextFieldName.getText();
+    if (fieldsOk())
+    {
       createNewPlace();
-      parent.setDefaultPlaceNew(place.getName());
+      this.parent.setDefaultPlaceNew(this.place.getName());
       setVisible(false);
     }
   }
-  
-  private void jButtonCancelActionPerformed(java.awt.event.ActionEvent evt) {
-    if (place != null) {
+
+  private void jButtonCancelActionPerformed(ActionEvent evt)
+  {
+    if (this.place != null)
+    {
       writeOldPlace();
-      parent.setDefaultPlaceNew(place.getName());
+      this.parent.setDefaultPlaceNew(this.place.getName());
     }
     setVisible(false);
   }
-  
-  private void jButtonDeleteActionPerformed(java.awt.event.ActionEvent evt) {
-    config.deletePlace(place);
-    parent.setDefaultPlaceNew(null);
+
+  private void jButtonDeleteActionPerformed(ActionEvent evt)
+  {
+    this.config.deletePlace(this.place);
+    this.parent.setDefaultPlaceNew(null);
     setVisible(false);
   }
-  
 
-
-  private javax.swing.JSpinner jSpinnerNumX;
-  
-  private javax.swing.JSpinner jSpinnerNumZ;
-  
-  private JTextField jTextField3;
-  
-  private JTextField jTextFieldName;
-  
-  private JTextField jTextFieldXPos;
-  
-  private JTextField jTextFieldYMax;
-  
-  private JTextField jTextFieldYMin;
-  
-  private JTextField jTextFieldZPos;
-  
   private boolean fieldsOk()
   {
     FieldCheck fc = new FieldCheck();
     fc.checkName(this);
-    fc.checkIntegerField(jTextFieldXPos);
-    fc.checkIntegerField(jTextFieldZPos);
-    fc.checkIntegerField(jTextFieldYMin);
-    fc.checkIntegerField(jTextFieldYMax);
-    fc.checkIntegerSpinner(jSpinnerNumX);
-    fc.checkIntegerSpinner(jSpinnerNumZ);
+    fc.checkIntegerField(this.jTextFieldXPos);
+    fc.checkIntegerField(this.jTextFieldZPos);
+    fc.checkIntegerField(this.jTextFieldYMin);
+    fc.checkIntegerField(this.jTextFieldYMax);
+    fc.checkIntegerSpinner(this.jSpinnerNumX);
+    fc.checkIntegerSpinner(this.jSpinnerNumZ);
     return fc.fieldsOk();
   }
-  
+
   private class FieldCheck
   {
     private boolean result;
-    
-    public FieldCheck() {
-      result = true;
-    }
-    
-    public boolean fieldsOk() {
-      return result;
-    }
-    
-    public void checkName(PlaceCreator pc) {
-      JTextField field = jTextFieldName;
-      String text = field.getText();
-      if (config.getPlace(text) != null) {
-        result = false;
-        field.setBackground(PlaceCreator.colorFormatIncorrect);
 
+    public FieldCheck()
+    {
+      this.result = true;
+    }
+
+    public boolean fieldsOk()
+    {
+      return this.result;
+    }
+
+    public void checkName(PlaceCreator pc)
+    {
+      JTextField field = PlaceCreator.this.jTextFieldName;
+      String text = field.getText();
+      if (PlaceCreator.this.config.getPlace(text) != null)
+      {
+        this.result = false;
+        field.setBackground(PlaceCreator.colorFormatIncorrect);
       }
-      else if (text.equals("")) {
-        result = false;
+      else if (text.equals(""))
+      {
+        this.result = false;
         field.setText(pc.makeName(text));
         field.setBackground(PlaceCreator.colorFormatWarning);
       }
-      else {
+      else
+      {
         field.setBackground(PlaceCreator.colorFormatCorrect);
       }
     }
-    
 
     public void checkIntegerField(JTextField field)
     {
       boolean continu = true;
-      try {
+      try
+      {
         new Integer(field.getText());
       }
-      catch (NumberFormatException e) {
-        result = false;
+      catch (NumberFormatException e)
+      {
+        this.result = false;
         continu = false;
         field.setBackground(PlaceCreator.colorFormatIncorrect);
       }
@@ -384,15 +340,17 @@ public class PlaceCreator extends javax.swing.JDialog
         field.setBackground(PlaceCreator.colorFormatCorrect);
       }
     }
-    
-    public void checkIntegerSpinner(javax.swing.JSpinner spinner)
+
+    public void checkIntegerSpinner(JSpinner spinner)
     {
       boolean continu = true;
-      try {
+      try
+      {
         new Integer(((Integer)spinner.getValue()).intValue());
       }
-      catch (ClassCastException e) {
-        result = false;
+      catch (ClassCastException e)
+      {
+        this.result = false;
         continu = false;
         spinner.setBackground(PlaceCreator.colorFormatIncorrect);
       }

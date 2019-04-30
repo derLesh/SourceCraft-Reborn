@@ -7,20 +7,12 @@ import buildable.Ramp;
 import cuboidFinder.CuboidFinder;
 import minecraft.map.MinecraftMap;
 
-
-
-
-
 public class ClipRampEast
   extends Addable
 {
   public ClipRampEast()
   {
     int[] temp = { 453, 450, 449, 446, 445 };
-    
-
-
-
 
     super.setMaterialUsedFor(temp);
   }

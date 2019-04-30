@@ -164,6 +164,4 @@ public class Material
   public static final int BIG_EAST_NORTH_RERUN = 462;
   public static final int BIG_WEST_SOUTH_RERUN = 463;
   public static final int BIG_WEST_NORTH_RERUN = 464;
-  
-  public Material() {}
 }

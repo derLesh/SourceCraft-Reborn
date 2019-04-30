@@ -5,7 +5,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.io.PrintStream;
 
 public class TextureFolderMover
 {
@@ -53,8 +52,6 @@ public class TextureFolderMover
       if (!dest.exists()) {
         dest.mkdir();
       }
-      
-
 
       String[] files = source.list();
       

@@ -8,20 +8,16 @@ public class ArrayCuboidFinder extends AbstractCuboidFinder
   {
     super(map);
   }
-  
+
   protected boolean blockNotValid(int xTest, int yTest, int zTest, int material)
   {
-    return (!map.hasMaterial(xTest, yTest, zTest, material)) || (!map.isNextToAir(xTest, yTest, zTest));
+    return (!this.map.hasMaterial(xTest, yTest, zTest, material)) || (!this.map.isNextToAir(xTest, yTest, zTest));
   }
-  
-
-
-
 
   protected boolean blockNotValid(int xTest, int yTest, int zTest, int[] materials)
   {
     for (int material : materials) {
-      if (map.hasMaterial(xTest, yTest, zTest, material)) {
+      if (this.map.hasMaterial(xTest, yTest, zTest, material)) {
         return false;
       }
     }

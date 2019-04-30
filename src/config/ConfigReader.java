@@ -8,48 +8,59 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class ConfigReader
-  extends Reader
+        extends Reader
 {
   public static final String fileName = "config.txt";
   private final Config config;
-  
-  public ConfigReader(Config config) throws FileNotFoundException
+
+  public ConfigReader(Config config)
+          throws FileNotFoundException
   {
     super("config.txt");
     this.config = config;
     readConfig();
   }
-  
-  private void readConfig() {
-    assert (config != null);
-    try {
-      do {
+
+  private void readConfig()
+  {
+    assert (this.config != null);
+    try
+    {
+      do
+      {
         String argument = nextArgument();
-        
-        if (argument.equals("version")) {
+        if (argument.equals("version"))
+        {
           String version = nextData();
-          config.setVersion(version);
+          this.config.setVersion(version);
         }
-        else if (argument.equals("mcrToVmf")) {
+        else if (argument.equals("mcrToVmf"))
+        {
           readMcrToVmf();
         }
-        else if (argument.equals("window")) {
+        else if (argument.equals("window"))
+        {
           readWindow();
         }
-        else if (argument.equals("paths")) {
+        else if (argument.equals("paths"))
+        {
           readPaths();
         }
-      } while (s.read() == 44);
-    } catch (IOException ex) {
+      } while (this.s.read() == 44);
+    }
+    catch (IOException ex)
+    {
       Logger.getLogger(ConfigReader.class.getName()).log(Level.SEVERE, null, ex);
     }
   }
-  
-  private void readMcrToVmf() {
-    try {
-      do {
+
+  private void readMcrToVmf()
+  {
+    try
+    {
+      do
+      {
         String argument = nextArgument();
-        
         if (argument.equals("variables")) {
           readVariables();
         }
@@ -62,206 +73,239 @@ public class ConfigReader
         if (argument.equals("convertOptions")) {
           readConvertOptions();
         }
-      } while (s.read() == 44);
-    } catch (IOException ex) {
+      } while (this.s.read() == 44);
+    }
+    catch (IOException ex)
+    {
       Logger.getLogger(ConfigReader.class.getName()).log(Level.SEVERE, null, ex);
     }
   }
-  
+
   private void readVariables()
   {
-    try {
-      do {
+    try
+    {
+      do
+      {
         String varName = nextArgument();
-        
-        if (varName.equals("game")) {
+        if (varName.equals("game"))
+        {
           String gameName = nextData();
-          config.setGame(gameName);
+          this.config.setGame(gameName);
         }
-        else if (varName.equals("texturePack")) {
+        else if (varName.equals("texturePack"))
+        {
           String packName = nextData();
-          config.setPack(packName);
+          this.config.setPack(packName);
         }
-        else if (varName.equals("place")) {
+        else if (varName.equals("place"))
+        {
           String place = nextData();
-          config.setPlace(place);
+          this.config.setPlace(place);
         }
-        else if (varName.equals("convertOption")) {
-          config.setConvertOption(nextData());
+        else if (varName.equals("convertOption"))
+        {
+          this.config.setConvertOption(nextData());
         }
-        
-      } while (s.read() == 44);
-      
-      while (s.read() != 62) {}
+      } while (this.s.read() == 44);
+      while (this.s.read() != 62) {}
     }
-    catch (IOException ex) {
+    catch (IOException ex)
+    {
       Logger.getLogger(ConfigReader.class.getName()).log(Level.SEVERE, null, ex);
     }
   }
-  
-  private void readTexturePacks() {
-    try {
+
+  private void readTexturePacks()
+  {
+    try
+    {
       TexturePack pack;
-      do { String packName = nextArgument();
-        
+      do
+      {
+        String packName = nextArgument();
+
         String size = nextData();
-        
 
         pack = new TexturePack(packName, new Integer(size).intValue());
-      }
-      while (s.read() == 44);
-      
-      while (s.read() != 62) {}
+      } while (this.s.read() == 44);
+      while (this.s.read() != 62) {}
     }
-    catch (IOException ex) {
+    catch (IOException ex)
+    {
       Logger.getLogger(ConfigReader.class.getName()).log(Level.SEVERE, null, ex);
     }
   }
-  
-  private void readGames() {
+
+  private void readGames()
+  {
     int read = 0;
-    try {
-      do {
+    try
+    {
+      do
+      {
         String gameName = nextArgument();
-        
+
         readGame(gameName);
-      } while (s.read() == 44);
-      
-      while (s.read() != 62) {}
+      } while (this.s.read() == 44);
+      while (this.s.read() != 62) {}
     }
-    catch (IOException ex) {
+    catch (IOException ex)
+    {
       Logger.getLogger(ConfigReader.class.getName()).log(Level.SEVERE, null, ex);
     }
   }
-  
-  private void readGame(String gameName) {
+
+  private void readGame(String gameName)
+  {
     SourceGame game = new SourceGame(gameName);
-    try {
-      do {
+    try
+    {
+      do
+      {
         String argument = nextArgument();
-        if (argument.equals("longName")) {
+        if (argument.equals("longName"))
+        {
           String longName = nextData();
           game.setLongName(longName);
         }
-        else if (argument.equals("shortName")) {
+        else if (argument.equals("shortName"))
+        {
           String shortName = nextData();
           game.setShortName(shortName);
         }
-        else if (argument.equals("gamePath")) {
+        else if (argument.equals("gamePath"))
+        {
           String gamePath = nextData();
           game.setGamePath(gamePath);
         }
-        else if (argument.equals("defaultConvertOption")) {
+        else if (argument.equals("defaultConvertOption"))
+        {
           String defaultConvertOption = nextData();
           game.setDefaultConvertOption(defaultConvertOption);
         }
-      } while (s.read() == 44);
-      
-      while (s.read() != 62) {}
+      } while (this.s.read() == 44);
+      while (this.s.read() != 62) {}
     }
-    catch (IOException ex) {
+    catch (IOException ex)
+    {
       Logger.getLogger(ConfigReader.class.getName()).log(Level.SEVERE, null, ex);
     }
-    config.addGame(game);
+    this.config.addGame(game);
   }
-  
-  private void readConvertOptions() {
+
+  private void readConvertOptions()
+  {
     int read = 0;
-    try {
-      do {
+    try
+    {
+      do
+      {
         String name = nextArgument();
-        
+
         readConvertOption(name);
-      } while (s.read() == 44);
-      
-      while (s.read() != 62) {}
+      } while (this.s.read() == 44);
+      while (this.s.read() != 62) {}
     }
-    catch (IOException ex) {
+    catch (IOException ex)
+    {
       Logger.getLogger(ConfigReader.class.getName()).log(Level.SEVERE, null, ex);
     }
   }
-  
-  private void readConvertOption(String name) {
+
+  private void readConvertOption(String name)
+  {
     ConvertOption options = new ConvertOption(name);
-    try {
-      do {
+    try
+    {
+      do
+      {
         String argument = nextArgument();
-        if (argument.equals("scale")) {
+        if (argument.equals("scale"))
+        {
           String scale = nextData();
           options.setScale(new Integer(scale).intValue());
         }
-        else if (argument.equals("skyTexture")) {
+        else if (argument.equals("skyTexture"))
+        {
           String skyTexture = nextData();
           options.setSkyTexture(skyTexture);
         }
-        else if (argument.equals("sunBrightness")) {
+        else if (argument.equals("sunBrightness"))
+        {
           Color sunLight = nextArgumentColor();
           options.setSunLight(sunLight);
         }
-        else if (argument.equals("sunAmbient")) {
+        else if (argument.equals("sunAmbient"))
+        {
           Color sunAmbient = nextArgumentColor();
           options.setSunAmbient(sunAmbient);
         }
-        else if (argument.equals("sunShadow")) {
+        else if (argument.equals("sunShadow"))
+        {
           Color sunShadow = nextArgumentColor();
           options.setSunShadow(sunShadow);
         }
-        else if (argument.equals("addable")) {
+        else if (argument.equals("addable"))
+        {
           String addable = nextData();
           options.addAddable(addable);
         }
-        
-      } while (s.read() == 44);
-      
-      while (s.read() != 62) {}
+      } while (this.s.read() == 44);
+      while (this.s.read() != 62) {}
     }
-    catch (IOException ex) {
+    catch (IOException ex)
+    {
       Logger.getLogger(ConfigReader.class.getName()).log(Level.SEVERE, null, ex);
     }
-    config.addConvertOption(options);
+    this.config.addConvertOption(options);
   }
-  
+
   private void readWindow()
   {
-    try {
-      do {
+    try
+    {
+      do
+      {
         String varName = nextArgument();
-        if (varName.equals("xPos")) {
+        if (varName.equals("xPos"))
+        {
           String xPos = nextData();
-          config.setWindowPosX(xPos);
+          this.config.setWindowPosX(xPos);
         }
-        if (varName.equals("yPos")) {
+        if (varName.equals("yPos"))
+        {
           String yPos = nextData();
-          config.setWindowPosY(yPos);
+          this.config.setWindowPosY(yPos);
         }
-        
-      } while (s.read() == 44);
-      
-      while (s.read() != 62) {}
+      } while (this.s.read() == 44);
+      while (this.s.read() != 62) {}
     }
-    catch (IOException ex) {
+    catch (IOException ex)
+    {
       Logger.getLogger(ConfigReader.class.getName()).log(Level.SEVERE, null, ex);
     }
   }
-  
-  private void readPaths() {
-    try {
-      do {
+
+  private void readPaths()
+  {
+    try
+    {
+      do
+      {
         String argument = nextArgument();
-        
         if (argument.equals("minecraft")) {
-          config.setMinecraftPath(nextData());
+          this.config.setMinecraftPath(nextData());
+        } else if (argument.equals("steam")) {
+          this.config.setSteamPath(nextData());
+        } else if (argument.equals("steamUserName")) {
+          this.config.setSteamUserName(nextData());
         }
-        else if (argument.equals("steam")) {
-          config.setSteamPath(nextData());
-        }
-        else if (argument.equals("steamUserName")) {
-          config.setSteamUserName(nextData());
-        }
-      } while (s.read() == 44);
-      
-      while (s.read() != 62) {}
-    } catch (IOException ex) {
+      } while (this.s.read() == 44);
+      while (this.s.read() != 62) {}
+    }
+    catch (IOException ex)
+    {
       Logger.getLogger(ConfigReader.class.getName()).log(Level.SEVERE, null, ex);
     }
   }

@@ -6,31 +6,37 @@ public class TexturePack
   private int textureSize;
   private static final String defaultName = "minecraft_original";
   private static final int defaultTextureSize = 128;
-  
-  public TexturePack() {
-    name = "minecraft_original";
-    textureSize = 128;
+
+  public TexturePack()
+  {
+    this.name = "minecraft_original";
+    this.textureSize = 128;
   }
-  
-  public TexturePack(String name) {
+
+  public TexturePack(String name)
+  {
     this.name = name;
-    textureSize = 128;
+    this.textureSize = 128;
   }
-  
-  public TexturePack(String name, int size) {
+
+  public TexturePack(String name, int size)
+  {
     this.name = name;
-    textureSize = size;
+    this.textureSize = size;
   }
-  
-  public int getTextureSize() {
-    return textureSize;
+
+  public int getTextureSize()
+  {
+    return this.textureSize;
   }
-  
-  public String getName() {
-    return name;
+
+  public String getName()
+  {
+    return this.name;
   }
-  
-  public String getTextureFolder() {
-    return name;
+
+  public String getTextureFolder()
+  {
+    return this.name;
   }
 }

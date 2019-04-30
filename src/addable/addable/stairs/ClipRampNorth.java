@@ -7,9 +7,6 @@ import buildable.Ramp;
 import cuboidFinder.CuboidFinder;
 import minecraft.map.MinecraftMap;
 
-
-
-
 public class ClipRampNorth
   extends Addable
 {

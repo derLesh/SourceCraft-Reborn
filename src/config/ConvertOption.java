@@ -3,12 +3,6 @@ package config;
 import buildable.Color;
 import java.util.Stack;
 
-
-
-
-
-
-
 public class ConvertOption
 {
   private String name;
@@ -18,71 +12,85 @@ public class ConvertOption
   private Color sunAmbient;
   private Color sunShadow;
   private Stack<String> addables;
-  
+
   public ConvertOption(String aName)
   {
-    name = aName;
-    scale = 40;
-    addables = new Stack();
+    this.name = aName;
+    this.scale = 40;
+    this.addables = new Stack();
   }
-  
-  public void setScale(int scale) {
+
+  public void setScale(int scale)
+  {
     this.scale = scale;
   }
-  
-  public void setSkyTexture(String skyTexture) {
+
+  public void setSkyTexture(String skyTexture)
+  {
     this.skyTexture = skyTexture;
   }
-  
-  public void setSunAmbient(Color sunAmbient) {
+
+  public void setSunAmbient(Color sunAmbient)
+  {
     this.sunAmbient = sunAmbient;
   }
-  
-  public void setSunLight(Color sunLight) {
+
+  public void setSunLight(Color sunLight)
+  {
     this.sunLight = sunLight;
   }
-  
-  public void setSunShadow(Color sunShadow) {
+
+  public void setSunShadow(Color sunShadow)
+  {
     this.sunShadow = sunShadow;
   }
-  
-  public String getName() {
-    return name;
+
+  public String getName()
+  {
+    return this.name;
   }
-  
-  public int getScale() {
-    return scale;
+
+  public int getScale()
+  {
+    return this.scale;
   }
-  
-  public String getSkyTexture() {
-    return skyTexture;
+
+  public String getSkyTexture()
+  {
+    return this.skyTexture;
   }
-  
-  public Color getSunAmbient() {
-    return sunAmbient;
+
+  public Color getSunAmbient()
+  {
+    return this.sunAmbient;
   }
-  
-  public Color getSunLight() {
-    return sunLight;
+
+  public Color getSunLight()
+  {
+    return this.sunLight;
   }
-  
-  public Color getSunShadow() {
-    return sunShadow;
+
+  public Color getSunShadow()
+  {
+    return this.sunShadow;
   }
-  
-  public void addAddable(String add) {
-    addables.push(add);
+
+  public void addAddable(String add)
+  {
+    this.addables.push(add);
   }
-  
-  public String[] getAddablesAsStrings() {
+
+  public String[] getAddablesAsStrings()
+  {
     Stack<String> addablesNew = new Stack();
-    int l = addables.size();
+    int l = this.addables.size();
     String[] result = new String[l];
-    for (int i = 0; i < l; i++) {
-      result[i] = ((String)addables.pop());
+    for (int i = 0; i < l; i++)
+    {
+      result[i] = ((String)this.addables.pop());
       addablesNew.push(result[i]);
     }
-    addables = addablesNew;
+    this.addables = addablesNew;
     return result;
   }
 }

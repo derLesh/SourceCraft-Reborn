@@ -5,21 +5,16 @@ import buildable.Solid;
 import java.io.IOException;
 import java.io.Writer;
 
-
-
-
-
-
-
 public class FuncIllusionary
-  extends SolidEntity
+        extends SolidEntity
 {
   public FuncIllusionary(Solid c)
   {
     super(c);
   }
-  
-  public void writeVmf(Counter counter, Writer w) throws IOException
+
+  public void writeVmf(Counter counter, Writer w)
+          throws IOException
   {
     w.write("entity\n");
     w.write("{\n");
@@ -32,7 +27,7 @@ public class FuncIllusionary
     w.write("\t\"rendercolor\" \"255 255 255\"\n");
     w.write("\t\"renderfx\" \"0\"\n");
     w.write("\t\"rendermode\" \"0\"\n");
-    
+
     writeSolids(counter, w);
     w.write("\teditor\n");
     w.write("\t{\n");

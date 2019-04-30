@@ -3,11 +3,8 @@ package textureSplitter;
 import java.io.File;
 import javax.swing.filechooser.FileFilter;
 
-public class FileFilterZip
-  extends FileFilter
+public class FileFilterZip extends FileFilter
 {
-  public FileFilterZip() {}
-  
   public boolean accept(File f)
   {
     return (f.getName().toLowerCase().endsWith(".zip")) || (f.isDirectory());

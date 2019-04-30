@@ -5,31 +5,27 @@ import buildable.Solid;
 import java.io.IOException;
 import java.io.Writer;
 
-
-
-
-
-
-
 public class FuncDetail
-  extends SolidEntity
+        extends SolidEntity
 {
   public FuncDetail(Solid solid)
   {
     super(solid);
   }
-  
-  public FuncDetail(Solid[] solids) {
+
+  public FuncDetail(Solid[] solids)
+  {
     super(solids);
   }
-  
-  public void writeVmf(Counter counter, Writer w) throws IOException
+
+  public void writeVmf(Counter counter, Writer w)
+          throws IOException
   {
     w.write("entity\n");
     w.write("{\n");
     w.write("\t\"id\" \"" + counter.getBrushId() + "\"\n");
     w.write("\t\"classname\" \"func_detail\"\n");
-    
+
     writeSolids(counter, w);
     w.write("\teditor\n");
     w.write("\t{\n");

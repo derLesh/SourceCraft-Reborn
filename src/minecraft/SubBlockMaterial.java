@@ -2,50 +2,51 @@ package minecraft;
 
 import buildable.Point;
 
-
-
-
-
-
-
 public class SubBlockMaterial
 {
   private Position position;
   private SubBlockPosition subBlockPosition;
   private int material;
-  
+
   public SubBlockMaterial(Position position, SubBlockPosition subBlockPosition, int material)
   {
     this.position = position;
     this.subBlockPosition = subBlockPosition;
     this.material = material;
   }
-  
-  public Position getPosition() {
-    return position;
+
+  public Position getPosition()
+  {
+    return this.position;
   }
-  
-  public void setPosition(Position position) {
+
+  public void setPosition(Position position)
+  {
     this.position = position;
   }
-  
-  public SubBlockPosition getSubBlockPosition() {
-    return subBlockPosition;
+
+  public SubBlockPosition getSubBlockPosition()
+  {
+    return this.subBlockPosition;
   }
-  
-  public void setSubBlockPosition(SubBlockPosition subBlockPosition) {
+
+  public void setSubBlockPosition(SubBlockPosition subBlockPosition)
+  {
     this.subBlockPosition = subBlockPosition;
   }
-  
-  public int getMaterial() {
-    return material;
+
+  public int getMaterial()
+  {
+    return this.material;
   }
-  
-  public void setMaterial(int material) {
+
+  public void setMaterial(int material)
+  {
     this.material = material;
   }
-  
-  public Point getPoint() {
-    return new Point(position.getX(), position.getY(), position.getZ());
+
+  public Point getPoint()
+  {
+    return new Point(this.position.getX(), this.position.getY(), this.position.getZ());
   }
 }

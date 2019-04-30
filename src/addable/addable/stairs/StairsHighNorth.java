@@ -7,37 +7,25 @@ import java.util.LinkedList;
 import minecraft.SubBlockPosition;
 import minecraft.map.MinecraftMap;
 
-
-
-
-
-
 public class StairsHighNorth
-  extends Addable
+        extends Addable
 {
   private int materialReplacement;
-  
+
   public StairsHighNorth()
   {
     int[] temp = { 371, 375, 379, 383, 387, 399, 421, 428, 435 };
-    
-
-
-
-
-
-
-
 
     super.setMaterialUsedFor(temp);
   }
-  
-  public StairsHighNorth(int material, int materialReplacement) {
+
+  public StairsHighNorth(int material, int materialReplacement)
+  {
     int[] temp = { material };
     super.setMaterialUsedFor(temp);
     this.materialReplacement = materialReplacement;
   }
-  
+
   public Iterable<Addable> getInstances()
   {
     LinkedList<Addable> list = new LinkedList();
@@ -52,50 +40,52 @@ public class StairsHighNorth
     list.add(new StairsHighNorth(435, 296));
     return list;
   }
-  
+
   public String getName()
   {
     return "stairsHighNorth";
   }
-  
+
   public boolean hasWall(Orientation orientation)
   {
     return orientation != Orientation.NORTH;
   }
-  
+
   public void add(Point p, int material)
   {
-    map.markAsConverted(p);
+    this.map.markAsConverted(p);
     int x = p.getPosX();
     int y = p.getPosY();
     int z = p.getPosZ();
-    if (map.hasOrHadMaterial(x + 1, y, z, getMaterialUsedFor())) {
-      map.addSubBlock(x, y, z, SubBlockPosition.BOTTOM_EAST_NORTH, materialReplacement);
-
+    if (this.map.hasOrHadMaterial(x + 1, y, z, getMaterialUsedFor()))
+    {
+      this.map.addSubBlock(x, y, z, SubBlockPosition.BOTTOM_EAST_NORTH, this.materialReplacement);
     }
-    else if (map.hasOrHadMaterial(x, y, z + 1, new StairsHighEast().getMaterialUsedFor())) {
-      map.addSubBlock(x, y, z, SubBlockPosition.BOTTOM_EAST_NORTH, materialReplacement);
-      map.addSubBlock(x, y, z, SubBlockPosition.BOTTOM_EAST_SOUTH, materialReplacement);
+    else if (this.map.hasOrHadMaterial(x, y, z + 1, new StairsHighEast().getMaterialUsedFor()))
+    {
+      this.map.addSubBlock(x, y, z, SubBlockPosition.BOTTOM_EAST_NORTH, this.materialReplacement);
+      this.map.addSubBlock(x, y, z, SubBlockPosition.BOTTOM_EAST_SOUTH, this.materialReplacement);
     }
-    else if (!map.hasOrHadMaterial(x, y, z - 1, new StairsHighWest().getMaterialUsedFor())) {
-      map.addSubBlock(x, y, z, SubBlockPosition.BOTTOM_EAST_NORTH, materialReplacement);
+    else if (!this.map.hasOrHadMaterial(x, y, z - 1, new StairsHighWest().getMaterialUsedFor()))
+    {
+      this.map.addSubBlock(x, y, z, SubBlockPosition.BOTTOM_EAST_NORTH, this.materialReplacement);
     }
-    
-    if (map.hasOrHadMaterial(x - 1, y, z, getMaterialUsedFor())) {
-      map.addSubBlock(x, y, z, SubBlockPosition.BOTTOM_WEST_NORTH, materialReplacement);
-
+    if (this.map.hasOrHadMaterial(x - 1, y, z, getMaterialUsedFor()))
+    {
+      this.map.addSubBlock(x, y, z, SubBlockPosition.BOTTOM_WEST_NORTH, this.materialReplacement);
     }
-    else if (map.hasOrHadMaterial(x, y, z + 1, new StairsHighWest().getMaterialUsedFor())) {
-      map.addSubBlock(x, y, z, SubBlockPosition.BOTTOM_WEST_NORTH, materialReplacement);
-      map.addSubBlock(x, y, z, SubBlockPosition.BOTTOM_WEST_SOUTH, materialReplacement);
+    else if (this.map.hasOrHadMaterial(x, y, z + 1, new StairsHighWest().getMaterialUsedFor()))
+    {
+      this.map.addSubBlock(x, y, z, SubBlockPosition.BOTTOM_WEST_NORTH, this.materialReplacement);
+      this.map.addSubBlock(x, y, z, SubBlockPosition.BOTTOM_WEST_SOUTH, this.materialReplacement);
     }
-    else if (!map.hasOrHadMaterial(x, y, z - 1, new StairsHighEast().getMaterialUsedFor())) {
-      map.addSubBlock(x, y, z, SubBlockPosition.BOTTOM_WEST_NORTH, materialReplacement);
+    else if (!this.map.hasOrHadMaterial(x, y, z - 1, new StairsHighEast().getMaterialUsedFor()))
+    {
+      this.map.addSubBlock(x, y, z, SubBlockPosition.BOTTOM_WEST_NORTH, this.materialReplacement);
     }
-    
-    map.addSubBlock(x, y, z, SubBlockPosition.TOP_EAST_SOUTH, materialReplacement);
-    map.addSubBlock(x, y, z, SubBlockPosition.TOP_EAST_NORTH, materialReplacement);
-    map.addSubBlock(x, y, z, SubBlockPosition.TOP_WEST_SOUTH, materialReplacement);
-    map.addSubBlock(x, y, z, SubBlockPosition.TOP_WEST_NORTH, materialReplacement);
+    this.map.addSubBlock(x, y, z, SubBlockPosition.TOP_EAST_SOUTH, this.materialReplacement);
+    this.map.addSubBlock(x, y, z, SubBlockPosition.TOP_EAST_NORTH, this.materialReplacement);
+    this.map.addSubBlock(x, y, z, SubBlockPosition.TOP_WEST_SOUTH, this.materialReplacement);
+    this.map.addSubBlock(x, y, z, SubBlockPosition.TOP_WEST_NORTH, this.materialReplacement);
   }
 }

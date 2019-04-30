@@ -4,14 +4,14 @@ import buildable.Point;
 import minecraft.VmfWriter;
 
 public abstract class PointEntity
-  implements VmfWriter
+        implements VmfWriter
 {
   protected Point p;
-  
+
   public PointEntity(Point origin)
   {
-    p = new Point(x, y, z);
+    this.p = new Point(origin.x, origin.y, origin.z);
   }
-  
+
   public abstract PointEntity create(Point paramPoint);
 }

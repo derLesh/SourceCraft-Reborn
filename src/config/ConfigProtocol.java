@@ -21,6 +21,4 @@ public class ConfigProtocol
   public static final String convertOptionsSunBrightness = "sunBrightness";
   public static final String convertOptionsSunAmbient = "sunAmbient";
   public static final String convertOptionsSunShadow = "sunShadow";
-  
-  public ConfigProtocol() {}
 }

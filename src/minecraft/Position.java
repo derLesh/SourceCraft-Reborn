@@ -1,16 +1,10 @@
 package minecraft;
 
-
-
 public class Position
 {
   private int x;
-  
-
   private int y;
-  
   private int z;
-  
 
   public Position(int x, int y, int z)
   {
@@ -18,31 +12,34 @@ public class Position
     this.y = y;
     this.z = z;
   }
-  
-  public int getX() {
-    return x;
+
+  public int getX()
+  {
+    return this.x;
   }
-  
-  public int getY() {
-    return y;
+
+  public int getY()
+  {
+    return this.y;
   }
-  
-  public int getZ() {
-    return z;
+
+  public int getZ()
+  {
+    return this.z;
   }
-  
+
   public boolean equals(Object object)
   {
-    if ((object instanceof Position)) {
+    if ((object instanceof Position))
+    {
       Position other = (Position)object;
-      return (x == x) && (y == y) && (z == z);
+      return (this.x == other.x) && (this.y == other.y) && (this.z == other.z);
     }
     return false;
   }
-  
 
   public String toString()
   {
-    return x + "," + y + "," + z;
+    return this.x + "," + this.y + "," + this.z;
   }
 }

@@ -10,8 +10,6 @@ import java.util.LinkedList;
 import java.util.List;
 import minecraft.map.MinecraftMap;
 
-
-
 public abstract class Addable
 {
   protected CuboidFinder cf;
@@ -19,64 +17,78 @@ public abstract class Addable
   protected AddableManager manager;
   protected int[] materialUsedFor = new int[0];
   private int[][] additionalMaterial = (int[][])null;
-  
-  public Addable() {}
-  
-  public Iterable<Addable> getInstances() { List<Addable> list = new LinkedList();
-    try {
+
+  public Iterable<Addable> getInstances()
+  {
+    List<Addable> list = new LinkedList();
+    try
+    {
       Addable a = (Addable)getClass().getConstructors()[0].newInstance(new Object[0]);
       list.add(a);
     }
-    catch (InstantiationException ex) {
+    catch (InstantiationException ex)
+    {
       Console.warning("Addable " + getName() + " does not has a suitable constructor (InstantiationException)");
     }
-    catch (IllegalAccessException ex) {
+    catch (IllegalAccessException ex)
+    {
       Console.warning("Addable " + getName() + " does not has a suitable constructor (IllegalAccessException)");
     }
-    catch (IllegalArgumentException ex) {
+    catch (IllegalArgumentException ex)
+    {
       Console.warning("Addable " + getName() + " does not has a suitable constructor (IllegalArgumentException)");
     }
-    catch (InvocationTargetException ex) {
+    catch (InvocationTargetException ex)
+    {
       Console.warning("Addable " + getName() + " does not has a suitable constructor (InvocationTargetException)");
     }
     return list;
   }
-  
+
   public abstract String getName();
-  
-  public void setAccess(CuboidFinder cf, MinecraftMap map, AddableManager manager) {
+
+  public void setAccess(CuboidFinder cf, MinecraftMap map, AddableManager manager)
+  {
     this.cf = cf;
     this.map = map;
     this.manager = manager;
   }
-  
+
   public boolean isAirBlock()
   {
     return true;
   }
-  
-  public boolean hasWall(Orientation orientation) {
+
+  public boolean hasWall(Orientation orientation)
+  {
     return false;
   }
-  
-  public int[] getMaterialUsedFor() {
-    return materialUsedFor;
+
+  public int[] getMaterialUsedFor()
+  {
+    return this.materialUsedFor;
   }
-  
-  public void setMaterialUsedFor(int[] material) { materialUsedFor = material; }
-  
-  public void setMaterialUsedFor(int material) {
-    materialUsedFor = new int[1];
-    materialUsedFor[0] = material;
+
+  public void setMaterialUsedFor(int[] material)
+  {
+    this.materialUsedFor = material;
   }
-  
-  public void setAdditionalMaterial(int[][] material) {
-    additionalMaterial = material;
+
+  public void setMaterialUsedFor(int material)
+  {
+    this.materialUsedFor = new int[1];
+    this.materialUsedFor[0] = material;
   }
-  
-  public int[][] getAdditionalMaterial() {
-    return additionalMaterial;
+
+  public void setAdditionalMaterial(int[][] material)
+  {
+    this.additionalMaterial = material;
   }
-  
+
+  public int[][] getAdditionalMaterial()
+  {
+    return this.additionalMaterial;
+  }
+
   public abstract void add(Point paramPoint, int paramInt);
 }

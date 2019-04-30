@@ -1,6 +1,6 @@
 package addable;
 
-public abstract interface MaterialFilter
+public interface MaterialFilter
 {
-  public abstract boolean filter(int paramInt);
+  boolean filter(int paramInt);
 }

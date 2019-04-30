@@ -1,5 +1,6 @@
 package buildable;
 
+// Should work - IDE shows no error
 
 public class Skin
 {
@@ -66,12 +67,12 @@ public class Skin
     
     materialTop = newMaterialTop;
     materialBottom = newMaterialTop;
-    
-    switch (1.$SwitchMap$buildable$Orientation[orientation.ordinal()]) {
-    case 1:  materialFront = newMaterialFront; break;
-    case 2:  materialRight = newMaterialFront; break;
-    case 3:  materialBack = newMaterialFront; break;
-    case 4:  materialLeft = newMaterialFront;
+
+    switch (orientation) {
+      case SOUTH:  materialFront = newMaterialFront; break;
+      case EAST:  materialRight = newMaterialFront; break;
+      case NORTH:  materialBack = newMaterialFront; break;
+      case WEST:  materialLeft = newMaterialFront;
     }
     scale = newScale;
   }
@@ -97,11 +98,11 @@ public class Skin
     materialTop = newMaterialTop;
     materialBottom = newMaterialBottom;
     
-    switch (1.$SwitchMap$buildable$Orientation[orientation.ordinal()]) {
-    case 1:  materialFront = newMaterialFront; break;
-    case 2:  materialRight = newMaterialFront; break;
-    case 3:  materialBack = newMaterialFront; break;
-    case 4:  materialLeft = newMaterialFront;
+    switch (orientation) {
+    case SOUTH:  materialFront = newMaterialFront; break;
+    case EAST:  materialRight = newMaterialFront; break;
+    case NORTH:  materialBack = newMaterialFront; break;
+    case WEST:  materialLeft = newMaterialFront;
     }
     scale = newScale;
   }
