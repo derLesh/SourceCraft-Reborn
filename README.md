@@ -1,4 +1,4 @@
-# SourceCraft-legacy - Current Version: v2.14 (legacy version)
+# SourceCraft Reborn - Current Version: v2.12 (legacy version)
 Since the tool is vanished from the internet and there is no support for newer versions
 
 ---
