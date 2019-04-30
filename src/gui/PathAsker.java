@@ -244,13 +244,11 @@ public class PathAsker
   {
     try
     {
-      for (UIManager.LookAndFeelInfo info : ) {
-        if ("Nimbus".equals(info.getName()))
-        {
+      for (UIManager.LookAndFeelInfo info : UIManager.getInstalledLookAndFeels())
+        if ("Nimbus".equals(info.getName())) {
           UIManager.setLookAndFeel(info.getClassName());
           break;
         }
-      }
     }
     catch (ClassNotFoundException ex)
     {

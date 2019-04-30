@@ -387,14 +387,14 @@ public class DefaultMinecraftMap
           for (int y = 0; y < this.verticalStart; y++) {
             s.readUnsignedByte();
           }
-          for (; y < this.verticalEnd; y++)
+          for (int y = 0; y < this.verticalEnd; y++)
           {
             int input = s.readUnsignedByte();
             this.materialField[x][(y + 1 - this.verticalStart)][z] = input;
             this.isNextToAir[x][(y + 1 - this.verticalStart)][z] = 0;
           }
           int input;
-          for (; y < 128; y++) {
+          for (int y = 0; y < 128; y++) {
             input = s.readUnsignedByte();
           }
         }

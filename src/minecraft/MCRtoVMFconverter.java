@@ -108,8 +108,8 @@ public class MCRtoVMFconverter
     if (parts.length != 2) {
       return true;
     }
-    int upperCompare = new Integer(parts[0]).intValue();
-    int lowerCompare = new Integer(parts[1]).intValue();
+    int upperCompare = Integer.parseInt(parts[0]);
+    int lowerCompare = Integer.parseInt(parts[1]);
     if (upper > upperCompare) {
       return true;
     }

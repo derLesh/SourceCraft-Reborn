@@ -34,4 +34,4 @@ https://creativecommons.org/licenses/by-nc-nd/3.0/
 
 I found no way to contact the original author. Minecraft Forum post is gone and there was no twitter/facebook account.
 
-If this continued version a problem for the creator, please contact me if you are the original author 
+If this continued version is a problem for the creator, please contact me if you are the original author 
