@@ -1,0 +1,11 @@
+places<
+    ttt_mc_office<
+        world<ttt_mc_office>,
+        x<0>,
+        z<0>,
+        #x<80>,
+        #z<80>,
+        yStart<3>,
+        yEnd<80>
+    >
+>
