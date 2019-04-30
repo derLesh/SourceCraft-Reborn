@@ -1,4 +1,9 @@
 # SourceCraft Reborn - Current Version: v2.12 (legacy version)
+
+<img scr="https://img.shields.io/twitter/url/https/github.com/derLesh/SourceCraft-Reborn.svg?style=social">
+
+---
+
 Since the tool is vanished from the internet and there is no support for newer versions
 
 ## Installation
