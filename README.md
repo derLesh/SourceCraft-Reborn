@@ -1,6 +1,10 @@
 # SourceCraft Reborn - Current Version: v2.12 (legacy version)
 
-<img scr="https://img.shields.io/twitter/url/https/github.com/derLesh/SourceCraft-Reborn.svg?style=social">
+<p align="center">
+    <a href="https://github.com/derLesh/SourceCraft-Reborn/issues"><img alt="GitHub issues" src="https://img.shields.io/github/issues/derLesh/SourceCraft-Reborn.svg?style=flat-square"></a>
+    <a href="https://github.com/derLesh/SourceCraft-Reborn/network"><img alt="GitHub forks" src="https://img.shields.io/github/forks/derLesh/SourceCraft-Reborn.svg?style=flat-square"></a>
+    <a href="https://twitter.com/intent/tweet?text=Wow:&url=https%3A%2F%2Fgithub.com%2FderLesh%2FSourceCraft-Reborn"><img alt="Twitter" src="https://img.shields.io/twitter/url/https/github.com/derLesh/SourceCraft-Reborn.svg?style=social"></a>
+</p>
 
 ---
 
