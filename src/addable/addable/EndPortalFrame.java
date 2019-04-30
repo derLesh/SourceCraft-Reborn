@@ -5,13 +5,6 @@ import buildable.Point;
 import cuboidFinder.CuboidFinder;
 import minecraft.map.MinecraftMap;
 
-
-
-
-
-
-
-
 public class EndPortalFrame
   extends Addable
 {

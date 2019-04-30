@@ -5,11 +5,6 @@ import buildable.Point;
 import cuboidFinder.CuboidFinder;
 import minecraft.map.MinecraftMap;
 
-
-
-
-
-
 public class TransparentBlock
   extends Addable
 {

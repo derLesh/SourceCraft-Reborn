@@ -9,13 +9,6 @@ import cuboidFinder.CuboidFinder;
 import java.util.LinkedList;
 import minecraft.map.MinecraftMap;
 
-
-
-
-
-
-
-
 public class PlayerSpawnCss
   extends Addable
 {

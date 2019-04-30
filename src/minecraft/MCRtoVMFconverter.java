@@ -231,7 +231,7 @@ public class MCRtoVMFconverter
       yEnd = 254;
     }
     File fileFolder = getFileFolder();
-    place.setWorld(getNameFromFileFoder(fileFolder));
+    place.setWorld(getNameFromFileFolder(fileFolder));
 
     place.setX(xCoor);
     place.setZ(zCoor);
@@ -367,7 +367,7 @@ public class MCRtoVMFconverter
     return result;
   }
 
-  public String getNameFromFileFoder(File file)
+  public String getNameFromFileFolder(File file)
   {
     String name = file.getName();
     if (name.equals("region"))
