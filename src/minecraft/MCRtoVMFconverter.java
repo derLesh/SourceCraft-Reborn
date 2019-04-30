@@ -21,11 +21,11 @@ import minecraft.map.DefaultMinecraftMap;
 public class MCRtoVMFconverter
         extends JFrame
 {
-  private final String title = "Sourcecraft - MCR to VMF converter";
-  private final String version = "2.12";
-  private final String author = "GartenMaps aka. Garten";
-  private final String license = "Attribution-NonCommercial-NoDerivs 3.0 Unported (CC BY-NC-ND 3.0)";
-  private final String licenseInfo = "http://creativecommons.org/licenses/by-nc-nd/3.0/legalcode";
+  private final String title = Language.TITLE;
+  private final String version = Language.VERSION;
+  private final String author = Language.AUTHOR;
+  private final String license = Language.LICENSE;
+  private final String licenseInfo = Language.LICENSE_INFO;
   private Config config;
   private static String placeName = "";
   private static final String ANVIL_ENDING = "mca";
@@ -63,10 +63,10 @@ public class MCRtoVMFconverter
       if (game == null) {
         if (order.equals("about"))
         {
-          System.out.println("Sourcecraft - MCR to VMF converter 2.12");
-          System.out.println("author: GartenMaps aka. Garten");
-          System.out.println("license Attribution-NonCommercial-NoDerivs 3.0 Unported (CC BY-NC-ND 3.0)");
-          System.out.println("for legal code licence see: http://creativecommons.org/licenses/by-nc-nd/3.0/legalcode");
+          System.out.println(title);
+          System.out.println(author);
+          System.out.println(license);
+          System.out.println("More infos here: " + licenseInfo);
         }
         else
         {
