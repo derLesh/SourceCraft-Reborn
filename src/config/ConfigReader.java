@@ -1,0 +1,268 @@
+package config;
+
+import buildable.Color;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+public class ConfigReader
+  extends Reader
+{
+  public static final String fileName = "config.txt";
+  private final Config config;
+  
+  public ConfigReader(Config config) throws FileNotFoundException
+  {
+    super("config.txt");
+    this.config = config;
+    readConfig();
+  }
+  
+  private void readConfig() {
+    assert (config != null);
+    try {
+      do {
+        String argument = nextArgument();
+        
+        if (argument.equals("version")) {
+          String version = nextData();
+          config.setVersion(version);
+        }
+        else if (argument.equals("mcrToVmf")) {
+          readMcrToVmf();
+        }
+        else if (argument.equals("window")) {
+          readWindow();
+        }
+        else if (argument.equals("paths")) {
+          readPaths();
+        }
+      } while (s.read() == 44);
+    } catch (IOException ex) {
+      Logger.getLogger(ConfigReader.class.getName()).log(Level.SEVERE, null, ex);
+    }
+  }
+  
+  private void readMcrToVmf() {
+    try {
+      do {
+        String argument = nextArgument();
+        
+        if (argument.equals("variables")) {
+          readVariables();
+        }
+        if (argument.equals("games")) {
+          readGames();
+        }
+        if (argument.equals("texturePacks")) {
+          readTexturePacks();
+        }
+        if (argument.equals("convertOptions")) {
+          readConvertOptions();
+        }
+      } while (s.read() == 44);
+    } catch (IOException ex) {
+      Logger.getLogger(ConfigReader.class.getName()).log(Level.SEVERE, null, ex);
+    }
+  }
+  
+  private void readVariables()
+  {
+    try {
+      do {
+        String varName = nextArgument();
+        
+        if (varName.equals("game")) {
+          String gameName = nextData();
+          config.setGame(gameName);
+        }
+        else if (varName.equals("texturePack")) {
+          String packName = nextData();
+          config.setPack(packName);
+        }
+        else if (varName.equals("place")) {
+          String place = nextData();
+          config.setPlace(place);
+        }
+        else if (varName.equals("convertOption")) {
+          config.setConvertOption(nextData());
+        }
+        
+      } while (s.read() == 44);
+      
+      while (s.read() != 62) {}
+    }
+    catch (IOException ex) {
+      Logger.getLogger(ConfigReader.class.getName()).log(Level.SEVERE, null, ex);
+    }
+  }
+  
+  private void readTexturePacks() {
+    try {
+      TexturePack pack;
+      do { String packName = nextArgument();
+        
+        String size = nextData();
+        
+
+        pack = new TexturePack(packName, new Integer(size).intValue());
+      }
+      while (s.read() == 44);
+      
+      while (s.read() != 62) {}
+    }
+    catch (IOException ex) {
+      Logger.getLogger(ConfigReader.class.getName()).log(Level.SEVERE, null, ex);
+    }
+  }
+  
+  private void readGames() {
+    int read = 0;
+    try {
+      do {
+        String gameName = nextArgument();
+        
+        readGame(gameName);
+      } while (s.read() == 44);
+      
+      while (s.read() != 62) {}
+    }
+    catch (IOException ex) {
+      Logger.getLogger(ConfigReader.class.getName()).log(Level.SEVERE, null, ex);
+    }
+  }
+  
+  private void readGame(String gameName) {
+    SourceGame game = new SourceGame(gameName);
+    try {
+      do {
+        String argument = nextArgument();
+        if (argument.equals("longName")) {
+          String longName = nextData();
+          game.setLongName(longName);
+        }
+        else if (argument.equals("shortName")) {
+          String shortName = nextData();
+          game.setShortName(shortName);
+        }
+        else if (argument.equals("gamePath")) {
+          String gamePath = nextData();
+          game.setGamePath(gamePath);
+        }
+        else if (argument.equals("defaultConvertOption")) {
+          String defaultConvertOption = nextData();
+          game.setDefaultConvertOption(defaultConvertOption);
+        }
+      } while (s.read() == 44);
+      
+      while (s.read() != 62) {}
+    }
+    catch (IOException ex) {
+      Logger.getLogger(ConfigReader.class.getName()).log(Level.SEVERE, null, ex);
+    }
+    config.addGame(game);
+  }
+  
+  private void readConvertOptions() {
+    int read = 0;
+    try {
+      do {
+        String name = nextArgument();
+        
+        readConvertOption(name);
+      } while (s.read() == 44);
+      
+      while (s.read() != 62) {}
+    }
+    catch (IOException ex) {
+      Logger.getLogger(ConfigReader.class.getName()).log(Level.SEVERE, null, ex);
+    }
+  }
+  
+  private void readConvertOption(String name) {
+    ConvertOption options = new ConvertOption(name);
+    try {
+      do {
+        String argument = nextArgument();
+        if (argument.equals("scale")) {
+          String scale = nextData();
+          options.setScale(new Integer(scale).intValue());
+        }
+        else if (argument.equals("skyTexture")) {
+          String skyTexture = nextData();
+          options.setSkyTexture(skyTexture);
+        }
+        else if (argument.equals("sunBrightness")) {
+          Color sunLight = nextArgumentColor();
+          options.setSunLight(sunLight);
+        }
+        else if (argument.equals("sunAmbient")) {
+          Color sunAmbient = nextArgumentColor();
+          options.setSunAmbient(sunAmbient);
+        }
+        else if (argument.equals("sunShadow")) {
+          Color sunShadow = nextArgumentColor();
+          options.setSunShadow(sunShadow);
+        }
+        else if (argument.equals("addable")) {
+          String addable = nextData();
+          options.addAddable(addable);
+        }
+        
+      } while (s.read() == 44);
+      
+      while (s.read() != 62) {}
+    }
+    catch (IOException ex) {
+      Logger.getLogger(ConfigReader.class.getName()).log(Level.SEVERE, null, ex);
+    }
+    config.addConvertOption(options);
+  }
+  
+  private void readWindow()
+  {
+    try {
+      do {
+        String varName = nextArgument();
+        if (varName.equals("xPos")) {
+          String xPos = nextData();
+          config.setWindowPosX(xPos);
+        }
+        if (varName.equals("yPos")) {
+          String yPos = nextData();
+          config.setWindowPosY(yPos);
+        }
+        
+      } while (s.read() == 44);
+      
+      while (s.read() != 62) {}
+    }
+    catch (IOException ex) {
+      Logger.getLogger(ConfigReader.class.getName()).log(Level.SEVERE, null, ex);
+    }
+  }
+  
+  private void readPaths() {
+    try {
+      do {
+        String argument = nextArgument();
+        
+        if (argument.equals("minecraft")) {
+          config.setMinecraftPath(nextData());
+        }
+        else if (argument.equals("steam")) {
+          config.setSteamPath(nextData());
+        }
+        else if (argument.equals("steamUserName")) {
+          config.setSteamUserName(nextData());
+        }
+      } while (s.read() == 44);
+      
+      while (s.read() != 62) {}
+    } catch (IOException ex) {
+      Logger.getLogger(ConfigReader.class.getName()).log(Level.SEVERE, null, ex);
+    }
+  }
+}
