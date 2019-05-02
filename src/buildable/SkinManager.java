@@ -25,33 +25,33 @@ public class SkinManager
     folder = folder + "/";
     int length = 450;
 
-    this.skins = new Skin['?'];
+    this.skins = new Skin['a'];
 
-    this.materialTextureType = new byte['?'];
+    this.materialTextureType = new byte['a'];
     for (int i = 0; i < 450; i++) {
       this.materialTextureType[i] = 0;
     }
-    this.materialTextureScale = new double['?'];
+    this.materialTextureScale = new double[''];
     for (int i = 0; i < 450; i++) {
       this.materialTextureScale[i] = this.textureScale;
     }
-    this.materialTexture = new String['?'];
+    this.materialTexture = new String['a'];
     for (int i = 0; i < 450; i++) {
       this.materialTexture[i] = ("texture not found: " + i);
     }
-    this.materialTextureTop = new String['?'];
+    this.materialTextureTop = new String['a'];
     for (int i = 0; i < 450; i++) {
       this.materialTextureTop[i] = "dev/dev_measuregeneric01b";
     }
-    this.materialTextureFront = new String['?'];
+    this.materialTextureFront = new String['a'];
     for (int i = 0; i < 450; i++) {
       this.materialTextureFront[i] = "dev/dev_measuregeneric01b";
     }
-    this.materialTextureBottom = new String['?'];
+    this.materialTextureBottom = new String['a'];
     for (int i = 0; i < 450; i++) {
       this.materialTextureBottom[i] = "dev/dev_measuregeneric01b";
     }
-    this.materialOrientation = new Orientation['?'];
+    this.materialOrientation = new Orientation['a'];
     for (int i = 0; i < 450; i++) {
       this.materialOrientation[i] = Orientation.NORTH;
     }
@@ -242,115 +242,115 @@ public class SkinManager
 
     this.materialTexture[126] = (folder + "wooden plank");
 
-    this.materialTextureType['?'] = 3;
-    this.materialTexture['?'] = (folder + "SANDSTONE SIDE");
-    this.materialTextureFront['?'] = (folder + "SANDSTONE SIDE");
-    this.materialTextureTop['?'] = (folder + "SANDSTONE TOP");
-    this.materialTextureBottom['?'] = (folder + "SANDSTONE BOTTOM");
+    this.materialTextureType['b'] = 3;
+    this.materialTexture['b'] = (folder + "SANDSTONE SIDE");
+    this.materialTextureFront['b'] = (folder + "SANDSTONE SIDE");
+    this.materialTextureTop['b'] = (folder + "SANDSTONE TOP");
+    this.materialTextureBottom['b'] = (folder + "SANDSTONE BOTTOM");
 
-    this.materialTexture['?'] = (folder + "pine wooden plank");
-    this.materialTexture['?'] = (folder + "birch wooden plank");
-    this.materialTexture['?'] = (folder + "jungle wooden plank");
+    this.materialTexture['b'] = (folder + "pine wooden plank");
+    this.materialTexture['b'] = (folder + "birch wooden plank");
+    this.materialTexture['b'] = (folder + "jungle wooden plank");
 
-    this.materialTexture['?'] = (folder + "emerald ore");
+    this.materialTexture['b'] = (folder + "emerald ore");
 
-    this.materialTexture['?'] = (folder + "emerald block");
+    this.materialTexture['b'] = (folder + "emerald block");
 
-    this.materialTexture['?'] = "ERROR";
+    this.materialTexture['C'] = "ERROR";
 
-    this.materialTextureType['?'] = 1;
-    this.materialTexture['?'] = (folder + "pine");
-    this.materialTextureTop['?'] = (folder + "wood top");
+    this.materialTextureType['c'] = 1;
+    this.materialTexture['c'] = (folder + "pine");
+    this.materialTextureTop['c'] = (folder + "wood top");
 
-    this.materialTextureType['?'] = 1;
-    this.materialTexture['?'] = (folder + "birch");
-    this.materialTextureTop['?'] = (folder + "wood top");
+    this.materialTextureType['C'] = 1;
+    this.materialTexture['C'] = (folder + "birch");
+    this.materialTextureTop['C'] = (folder + "wood top");
 
-    this.materialTexture['?'] = (folder + "PINE LEAVES");
-    this.materialTexture['?'] = this.materialTexture[18];
-    this.materialTexture['?'] = (folder + "ORANGE WOOL");
-    this.materialTexture['?'] = (folder + "MAGENTA WOOL");
-    this.materialTexture['?'] = (folder + "LIGHT BLUE WOOL");
-    this.materialTexture['?'] = (folder + "YELLOW WOOL");
-    this.materialTexture['?'] = (folder + "LIGHT GREEN WOOL");
-    this.materialTexture['?'] = (folder + "PINK WOOL");
-    this.materialTexture['?'] = (folder + "GRAY WOOL");
-    this.materialTexture['?'] = (folder + "LIGHT GRAY WOOL");
-    this.materialTexture['?'] = (folder + "CYAN WOOL");
-    this.materialTexture['?'] = (folder + "PURPLE WOOL");
-    this.materialTexture['?'] = (folder + "BLUE WOOL");
-    this.materialTexture['?'] = (folder + "BROWN WOOL");
-    this.materialTexture['?'] = (folder + "DARK GREEN WOOL");
-    this.materialTexture['?'] = (folder + "RED WOOL");
-    this.materialTexture['?'] = (folder + "BLACK WOOL");
+    this.materialTexture['d'] = (folder + "PINE LEAVES");
+    this.materialTexture['D'] = this.materialTexture[18];
+    this.materialTexture['e'] = (folder + "ORANGE WOOL");
+    this.materialTexture['E'] = (folder + "MAGENTA WOOL");
+    this.materialTexture['f'] = (folder + "LIGHT BLUE WOOL");
+    this.materialTexture['F'] = (folder + "YELLOW WOOL");
+    this.materialTexture['g'] = (folder + "LIGHT GREEN WOOL");
+    this.materialTexture['G'] = (folder + "PINK WOOL");
+    this.materialTexture['h'] = (folder + "GRAY WOOL");
+    this.materialTexture['H'] = (folder + "LIGHT GRAY WOOL");
+    this.materialTexture['i'] = (folder + "CYAN WOOL");
+    this.materialTexture['I'] = (folder + "PURPLE WOOL");
+    this.materialTexture['j'] = (folder + "BLUE WOOL");
+    this.materialTexture['J'] = (folder + "BROWN WOOL");
+    this.materialTexture['k'] = (folder + "DARK GREEN WOOL");
+    this.materialTexture['K'] = (folder + "RED WOOL");
+    this.materialTexture['l'] = (folder + "BLACK WOOL");
 
-    this.materialTexture['?'] = (folder + "SOIL WET");
+    this.materialTexture['L'] = (folder + "SOIL WET");
 
-    this.materialTexture['?'] = (folder + "MOSSY STONE BRICK");
-    this.materialTexture['?'] = (folder + "CRACKED STONE BRICK");
+    this.materialTexture['m'] = (folder + "MOSSY STONE BRICK");
+    this.materialTexture['M'] = (folder + "CRACKED STONE BRICK");
 
-    this.materialTexture['?'] = (folder + "TALL GRASS");
-    this.materialTexture['?'] = (folder + "FERM");
+    this.materialTexture['n'] = (folder + "TALL GRASS");
+    this.materialTexture['N'] = (folder + "FERM");
 
-    this.materialTextureType['?'] = 3;
-    this.materialTexture['?'] = (folder + "SANDSTONE SIDE");
-    this.materialTextureFront['?'] = (folder + "SANDSTONE SIDE");
-    this.materialTextureTop['?'] = (folder + "SANDSTONE TOP");
-    this.materialTextureBottom['?'] = (folder + "SANDSTONE BOTTOM");
-    this.materialTexture['?'] = (folder + "WOODEN PLANK");
-    this.materialTexture['?'] = (folder + "COBBLESTONE");
-    this.materialTexture['?'] = (folder + "BRICK");
-    this.materialTexture['?'] = (folder + "STONE BRICK");
-    this.materialTexture['?'] = (folder + "STONE");
-    this.materialTexture['?'] = "unused";
+    this.materialTextureType['o'] = 3;
+    this.materialTexture['O'] = (folder + "SANDSTONE SIDE");
+    this.materialTextureFront['p'] = (folder + "SANDSTONE SIDE");
+    this.materialTextureTop['P'] = (folder + "SANDSTONE TOP");
+    this.materialTextureBottom['q'] = (folder + "SANDSTONE BOTTOM");
+    this.materialTexture['Q'] = (folder + "WOODEN PLANK");
+    this.materialTexture['r'] = (folder + "COBBLESTONE");
+    this.materialTexture['R'] = (folder + "BRICK");
+    this.materialTexture['s'] = (folder + "STONE BRICK");
+    this.materialTexture['S'] = (folder + "STONE");
+    this.materialTexture['t'] = "unused";
 
-    this.skins['?'] = this.skins[24];
+    this.skins['T'] = this.skins[24];
 
-    this.materialTexture['?'] = (folder + "WOODEN PLANK");
-    this.materialTexture['?'] = (folder + "COBBLESTONE");
-    this.materialTexture['?'] = (folder + "BRICK");
-    this.materialTexture['?'] = (folder + "STONE BRICK");
-    this.materialTextureType['?'] = 1;
-    this.materialTexture['?'] = (folder + "STONE SLAB");
-    this.materialTextureTop['?'] = (folder + "STONE SLAB TOP");
-    this.materialTexture['?'] = (folder + "nether brick");
+    this.materialTexture['u'] = (folder + "WOODEN PLANK");
+    this.materialTexture['U'] = (folder + "COBBLESTONE");
+    this.materialTexture['v'] = (folder + "BRICK");
+    this.materialTexture['V'] = (folder + "STONE BRICK");
+    this.materialTextureType['w'] = 1;
+    this.materialTexture['W'] = (folder + "STONE SLAB");
+    this.materialTextureTop['x'] = (folder + "STONE SLAB TOP");
+    this.materialTexture['X'] = (folder + "nether brick");
 
-    this.materialTexture['?'] = (folder + "stone");
-    this.skins['?'] = this.skins[24];
+    this.materialTexture['y'] = (folder + "stone");
+    this.skins['Y'] = this.skins[24];
 
-    this.materialTexture['?'] = (folder + "wooden plank");
-    this.materialTexture['?'] = (folder + "cobblestone");
-    this.materialTexture['?'] = (folder + "brick");
-    this.materialTexture['?'] = (folder + "stone brick");
-    this.materialTextureType['?'] = 1;
-    this.materialTexture['?'] = (folder + "stone slab");
-    this.materialTextureTop['?'] = (folder + "stone slab top");
-    this.materialTexture['?'] = (folder + "S 15");
+    this.materialTexture['z'] = (folder + "wooden plank");
+    this.materialTexture['Z'] = (folder + "cobblestone");
+    this.materialTexture['ü'] = (folder + "brick");
+    this.materialTexture['Ü'] = (folder + "stone brick");
+    this.materialTextureType['ö'] = 1;
+    this.materialTexture['ö'] = (folder + "stone slab");
+    this.materialTextureTop['À'] = (folder + "stone slab top");
+    this.materialTexture['Â'] = (folder + "S 15");
 
-    this.materialTexture['?'] = (folder + "COBBLESTONE");
-    this.materialTexture['?'] = (folder + "STONE BRICK");
+    this.materialTexture['Á'] = (folder + "COBBLESTONE");
+    this.materialTexture['Ã'] = (folder + "STONE BRICK");
 
-    this.materialTexture['?'] = "tools/toolsplayerclip";
+    this.materialTexture['Å'] = "tools/toolsplayerclip";
 
-    this.materialTexture['?'] = (folder + "WOODEN PLANK");
-    this.materialTexture['?'] = (folder + "WOODEN PLANK");
-    this.materialTexture['?'] = (folder + "WOODEN PLANK");
+    this.materialTexture['Æ'] = (folder + "WOODEN PLANK");
+    this.materialTexture['Ç'] = (folder + "WOODEN PLANK");
+    this.materialTexture['È'] = (folder + "WOODEN PLANK");
 
-    this.materialTexture['?'] = (folder + "COBBLESTONE");
-    this.materialTexture['?'] = (folder + "COBBLESTONE");
-    this.materialTexture['?'] = (folder + "COBBLESTONE");
+    this.materialTexture['É'] = (folder + "COBBLESTONE");
+    this.materialTexture['Ê'] = (folder + "COBBLESTONE");
+    this.materialTexture['Ë'] = (folder + "COBBLESTONE");
 
-    this.materialTexture['?'] = (folder + "BRICK");
-    this.materialTexture['?'] = (folder + "BRICK");
-    this.materialTexture['?'] = (folder + "BRICK");
+    this.materialTexture['Ì'] = (folder + "BRICK");
+    this.materialTexture['Í'] = (folder + "BRICK");
+    this.materialTexture['Î'] = (folder + "BRICK");
 
-    this.materialTexture['?'] = (folder + "STONE BRICK");
-    this.materialTexture['?'] = (folder + "STONE BRICK");
-    this.materialTexture['?'] = (folder + "STONE BRICK");
+    this.materialTexture['Ï'] = (folder + "STONE BRICK");
+    this.materialTexture['Ð'] = (folder + "STONE BRICK");
+    this.materialTexture['Ñ'] = (folder + "STONE BRICK");
 
-    this.materialTexture['?'] = (folder + "NETHER BRICK");
-    this.materialTexture['?'] = (folder + "NETHER BRICK");
-    this.materialTexture['?'] = (folder + "NETHER BRICK");
+    this.materialTexture['Ò'] = (folder + "NETHER BRICK");
+    this.materialTexture['Ó'] = (folder + "NETHER BRICK");
+    this.materialTexture['Ô'] = (folder + "NETHER BRICK");
 
     this.materialTextureType['?'] = 2;
     this.materialTexture['?'] = (folder + "FURNACE SIDE");
@@ -400,16 +400,16 @@ public class SkinManager
     this.materialTextureTop['?'] = (folder + "CHEST TOP");
     this.materialOrientation['?'] = Orientation.EAST;
 
-    this.materialTextureType['�'] = 2;
-    this.materialTexture['�'] = (folder + "FURNACE SIDE");
-    this.materialTextureFront['�'] = (folder + "DISPENSER FRONT");
-    this.materialTextureTop['�'] = (folder + "FURNACE TOP");
-    this.materialOrientation['�'] = Orientation.SOUTH;
-    this.materialTextureType['�'] = 2;
-    this.materialTexture['�'] = (folder + "FURNACE SIDE");
-    this.materialTextureFront['�'] = (folder + "DISPENSER FRONT");
-    this.materialTextureTop['�'] = (folder + "FURNACE TOP");
-    this.materialOrientation['�'] = Orientation.WEST;
+    this.materialTextureType['?'] = 2;
+    this.materialTexture['?'] = (folder + "FURNACE SIDE");
+    this.materialTextureFront['?'] = (folder + "DISPENSER FRONT");
+    this.materialTextureTop['?'] = (folder + "FURNACE TOP");
+    this.materialOrientation['?'] = Orientation.SOUTH;
+    this.materialTextureType['?'] = 2;
+    this.materialTexture['?'] = (folder + "FURNACE SIDE");
+    this.materialTextureFront['?'] = (folder + "DISPENSER FRONT");
+    this.materialTextureTop['?'] = (folder + "FURNACE TOP");
+    this.materialOrientation['?'] = Orientation.WEST;
     this.materialTextureType['?'] = 2;
     this.materialTexture['?'] = (folder + "FURNACE SIDE");
     this.materialTextureFront['?'] = (folder + "DISPENSER FRONT");
@@ -454,8 +454,8 @@ public class SkinManager
     this.materialTexture['?'] = (folder + "vines");
     this.materialTexture['?'] = (folder + "vines");
     this.materialTexture['?'] = (folder + "vines");
-    this.materialTexture['�'] = (folder + "vines");
-    this.materialTexture['�'] = (folder + "vines");
+    this.materialTexture['?'] = (folder + "vines");
+    this.materialTexture['?'] = (folder + "vines");
     this.materialTexture['?'] = (folder + "vines");
     this.materialTexture['?'] = (folder + "vines");
     this.materialTexture['?'] = (folder + "vines");
@@ -487,15 +487,15 @@ public class SkinManager
     this.materialTexture['?'] = (folder + "cobblestone");
     this.materialTexture['?'] = (folder + "cobblestone");
 
-    this.materialTexture['�'] = (folder + "BRICK");
+    this.materialTexture['?'] = (folder + "BRICK");
     this.materialTexture['?'] = (folder + "BRICK");
     this.materialTexture['?'] = (folder + "BRICK");
     this.materialTexture['?'] = (folder + "BRICK");
 
     this.materialTexture['?'] = (folder + "STONE BRICK");
-    this.materialTexture['�'] = (folder + "STONE BRICK");
     this.materialTexture['?'] = (folder + "STONE BRICK");
-    this.materialTexture['�'] = (folder + "STONE BRICK");
+    this.materialTexture['?'] = (folder + "STONE BRICK");
+    this.materialTexture['?'] = (folder + "STONE BRICK");
 
     this.materialTexture['?'] = (folder + "nether brick");
     this.materialTexture['?'] = (folder + "nether brick");
@@ -512,7 +512,7 @@ public class SkinManager
 
     this.materialTexture['?'] = (folder + "pine wooden plank");
     this.materialTexture['?'] = (folder + "birch wooden plank");
-    this.materialTexture['�'] = (folder + "jungle wooden plank");
+    this.materialTexture['?'] = (folder + "jungle wooden plank");
     this.materialTexture['?'] = (folder + "todo");
     this.materialTexture['?'] = (folder + "todo");
     this.materialTexture['?'] = (folder + "todo");
