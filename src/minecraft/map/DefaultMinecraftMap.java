@@ -126,21 +126,21 @@ public class DefaultMinecraftMap
     for (int x = 0; x < this.arraySizeX; x++) {
       for (int z = 0; z < this.arraySizeZ; z++)
       {
-        this.isNextToAir[x][0][z] = 1;
-        this.isNextToAir[x][(this.arraySizeY - 1)][z] = 1;
+        this.isNextToAir[x][0][z] = true;
+        this.isNextToAir[x][(this.arraySizeY - 1)][z] = true;
       }
     }
     for (int y = 1; y < this.arraySizeY - 2; y++)
     {
       for (int x = 0; x < this.arraySizeX; x++)
       {
-        this.isNextToAir[x][y][0] = 1;
-        this.isNextToAir[x][y][(this.arraySizeZ - 1)] = 1;
+        this.isNextToAir[x][y][0] = true;
+        this.isNextToAir[x][y][(this.arraySizeZ - 1)] = true;
       }
       for (int z = 1; z < this.arraySizeZ - 1; z++)
       {
-        this.isNextToAir[0][y][z] = 1;
-        this.isNextToAir[(this.arraySizeX - 1)][y][z] = 1;
+        this.isNextToAir[0][y][z] = true;
+        this.isNextToAir[(this.arraySizeX - 1)][y][z] = true;
       }
     }
   }
@@ -152,12 +152,12 @@ public class DefaultMinecraftMap
         for (int z = 1; z < this.arraySizeZ - 1; z++) {
           if (isAirBlockInitiate(x, y, z))
           {
-            this.isAirBlock[x][y][z] = 1;
+            this.isAirBlock[x][y][z] = true;
             markNeighbors(x, y, z);
           }
           else
           {
-            this.isAirBlock[x][y][z] = 0;
+            this.isAirBlock[x][y][z] = false;
           }
         }
       }
@@ -171,7 +171,7 @@ public class DefaultMinecraftMap
       for (int y = 1; y < this.arraySizeY - 1; y++) {
         for (int x = 1; x < this.arraySizeX - 1; x++) {
           for (int z = 1; z < this.arraySizeZ - 1; z++) {
-            if (this.isNextToAir[x][y][z] == 1) {
+            if (this.isNextToAir[x][y][z]) {
               this.addableManager.add(x, y, z);
             }
           }
@@ -187,7 +187,7 @@ public class DefaultMinecraftMap
         for (int y = 1; y < this.arraySizeY - 1; y++) {
           for (int x = 1; x < this.arraySizeX - 1; x++) {
             for (int z = 1; z < this.arraySizeZ - 1; z++) {
-              if (this.isNextToAir[x][y][z] == 1) {
+              if (this.isNextToAir[x][y][z]) {
                 this.addableManager.add(x, y, z);
               }
             }
@@ -205,13 +205,13 @@ public class DefaultMinecraftMap
 
   public void markNeighbors(int x, int y, int z)
   {
-    this.isNextToAir[x][y][z] = 1;
-    this.isNextToAir[(x + 1)][y][z] = 1;
-    this.isNextToAir[(x - 1)][y][z] = 1;
-    this.isNextToAir[x][(y + 1)][z] = 1;
-    this.isNextToAir[x][(y - 1)][z] = 1;
-    this.isNextToAir[x][y][(z + 1)] = 1;
-    this.isNextToAir[x][y][(z - 1)] = 1;
+    this.isNextToAir[x][y][z] = true;
+    this.isNextToAir[(x + 1)][y][z] = true;
+    this.isNextToAir[(x - 1)][y][z] = true;
+    this.isNextToAir[x][(y + 1)][z] = true;
+    this.isNextToAir[x][(y - 1)][z] = true;
+    this.isNextToAir[x][y][(z + 1)] = true;
+    this.isNextToAir[x][y][(z - 1)] = true;
   }
 
   public boolean isAirBlock(int x, int y, int z)
@@ -271,7 +271,7 @@ public class DefaultMinecraftMap
         {
           map.materialField[x][y][z] = 0;
 
-          map.isNextToAir[x][y][z] = 1;
+          map.isNextToAir[x][y][z] = true;
         }
       }
     }
@@ -297,7 +297,6 @@ public class DefaultMinecraftMap
         {
           int xPos = 1 + 16 * a;
           int zPos = 1 + 16 * b;
-          NbtReader reader;
           NbtReader reader;
           if (mapFormat.equals("mca")) {
             reader = new NbtMcaReader(regionfile.getChunkDataInputStream(localChunkPosX, localChunkPosZ), map, xPos, zPos);
@@ -391,7 +390,7 @@ public class DefaultMinecraftMap
           {
             int input = s.readUnsignedByte();
             this.materialField[x][(y + 1 - this.verticalStart)][z] = input;
-            this.isNextToAir[x][(y + 1 - this.verticalStart)][z] = 0;
+            this.isNextToAir[x][(y + 1 - this.verticalStart)][z] = false;
           }
           int input;
           for (int y = 0; y < 128; y++) {
@@ -425,7 +424,7 @@ public class DefaultMinecraftMap
               byte tempData = section.getData()[x][y][z];
 
               this.materialField[(xPos + x)][(yOffset + y + 1 - this.verticalStart)][(zPos + z)] = tempMaterial;
-              this.isNextToAir[(xPos + x)][(yOffset + y + 1 - this.verticalStart)][(zPos + z)] = 0;
+              this.isNextToAir[(xPos + x)][(yOffset + y + 1 - this.verticalStart)][(zPos + z)] = false;
 
               this.data[(xPos + x)][(yOffset + y + 1 - this.verticalStart)][(zPos + z)] = tempData;
             }

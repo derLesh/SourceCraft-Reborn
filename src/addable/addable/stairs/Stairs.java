@@ -25,7 +25,7 @@ public abstract class Stairs
     clearSubField();
     getType(p);
     for (SubBlockPosition subBlockPosition : SubBlockPosition.values()) {
-      if (this.subField[subBlockPosition.ordinal()] == 1) {
+      if (this.subField[subBlockPosition.ordinal()]) {
         this.map.addSubBlock(p, subBlockPosition, this.materialReplacement);
       }
     }
@@ -36,7 +36,7 @@ public abstract class Stairs
 
   protected void setSubBlock(SubBlockPosition position)
   {
-    assert (this.subField[SubBlockPosition.getPos(position)] == 0) : ("position = " + position);
+    assert (this.subField[SubBlockPosition.getPos(position)] == false) : ("position = " + position);
     this.subField[SubBlockPosition.getPos(position)] = true;
   }
 
@@ -48,21 +48,21 @@ public abstract class Stairs
   protected final void addClipRamp(Point p)
   {
     this.map.enableRerun(1);
-    if (this.subField[SubBlockPosition.TOP_EAST_SOUTH.ordinal()] != 0)
+    if (this.subField[SubBlockPosition.TOP_EAST_SOUTH.ordinal()] != false)
     {
-      if (this.subField[SubBlockPosition.TOP_EAST_NORTH.ordinal()] != 0)
+      if (this.subField[SubBlockPosition.TOP_EAST_NORTH.ordinal()] != false)
       {
-        if (this.subField[SubBlockPosition.TOP_WEST_NORTH.ordinal()] != 0) {
+        if (this.subField[SubBlockPosition.TOP_WEST_NORTH.ordinal()] != false) {
           addClipRamp(p, OrientationStairs.BIG_EAST_NORTH);
-        } else if (this.subField[SubBlockPosition.TOP_WEST_SOUTH.ordinal()] != 0) {
+        } else if (this.subField[SubBlockPosition.TOP_WEST_SOUTH.ordinal()] != false) {
           addClipRamp(p, OrientationStairs.BIG_EAST_SOUTH);
         } else {
           addClipRamp(p, OrientationStairs.EAST);
         }
       }
-      else if (this.subField[SubBlockPosition.TOP_WEST_SOUTH.ordinal()] != 0)
+      else if (this.subField[SubBlockPosition.TOP_WEST_SOUTH.ordinal()] != false)
       {
-        if (this.subField[SubBlockPosition.TOP_WEST_NORTH.ordinal()] != 0) {
+        if (this.subField[SubBlockPosition.TOP_WEST_NORTH.ordinal()] != false) {
           addClipRamp(p, OrientationStairs.BIG_WEST_SOUTH);
         } else {
           addClipRamp(p, OrientationStairs.SOUTH);
@@ -72,11 +72,11 @@ public abstract class Stairs
         addClipRamp(p, OrientationStairs.SMALL_EAST_SOUTH);
       }
     }
-    else if (this.subField[SubBlockPosition.TOP_WEST_SOUTH.ordinal()] != 0)
+    else if (this.subField[SubBlockPosition.TOP_WEST_SOUTH.ordinal()] != false)
     {
-      if (this.subField[SubBlockPosition.TOP_WEST_NORTH.ordinal()] != 0)
+      if (this.subField[SubBlockPosition.TOP_WEST_NORTH.ordinal()] != false)
       {
-        if (this.subField[SubBlockPosition.TOP_EAST_NORTH.ordinal()] != 0) {
+        if (this.subField[SubBlockPosition.TOP_EAST_NORTH.ordinal()] != false) {
           addClipRamp(p, OrientationStairs.BIG_WEST_NORTH);
         } else {
           addClipRamp(p, OrientationStairs.WEST);
@@ -86,9 +86,9 @@ public abstract class Stairs
         addClipRamp(p, OrientationStairs.SMALL_WEST_SOUTH);
       }
     }
-    else if (this.subField[SubBlockPosition.TOP_WEST_NORTH.ordinal()] != 0)
+    else if (this.subField[SubBlockPosition.TOP_WEST_NORTH.ordinal()] != false)
     {
-      if (this.subField[SubBlockPosition.TOP_EAST_NORTH.ordinal()] != 0) {
+      if (this.subField[SubBlockPosition.TOP_EAST_NORTH.ordinal()] != false) {
         addClipRamp(p, OrientationStairs.NORTH);
       } else {
         addClipRamp(p, OrientationStairs.SMALL_WEST_NORTH);
