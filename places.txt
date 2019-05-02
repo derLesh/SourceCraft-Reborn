@@ -1,4 +1,13 @@
 places<
+    sourcecraft_test<
+        world<ttt_mc_rooftops>,
+        x<-40>,
+        z<17>,
+        #x<80>,
+        #z<80>,
+        yStart<0>,
+        yEnd<120>
+    >,
     ttt_mc_office<
         world<ttt_mc_office>,
         x<0>,
