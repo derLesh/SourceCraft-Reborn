@@ -8,7 +8,7 @@
 
 ---
 
-Since the tool is vanished from the internet and there is no support for newer versions
+A new and better version of the beloved tool SourceCraft to convert Minecraft maps into Source Engine maps
 
 ## Installation
 
