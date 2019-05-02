@@ -29,9 +29,9 @@ public class SkinManager
 
     this.materialTextureType = new byte['a'];
     for (int i = 0; i < 450; i++) {
-      this.materialTextureType[i] = 0;
+      this.materialTextureType[i] = Byte.parseByte("a");
     }
-    this.materialTextureScale = new double[''];
+    this.materialTextureScale = new double['a'];
     for (int i = 0; i < 450; i++) {
       this.materialTextureScale[i] = this.textureScale;
     }

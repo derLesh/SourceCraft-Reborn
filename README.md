@@ -10,6 +10,8 @@
 
 A new and better version of the beloved tool SourceCraft to convert Minecraft maps into Source Engine maps
 
+I try to completely rework the program and make it better than before. You can help me via Pull Requests
+
 ## Installation
 
 If you just wanna use the programm, download the repo and launch the .jar file.
