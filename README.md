@@ -8,6 +8,11 @@
 
 ---
 
+## Important information
+The project is currently on hold. You are still able to download the legacy version and run it. But nothing changed in the code.
+
+---
+
 A new and better version of the beloved tool SourceCraft to convert Minecraft maps into Source Engine maps
 
 I try to completely rework the program and make it better than before. You can help me via Pull Requests
