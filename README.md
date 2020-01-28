@@ -19,7 +19,7 @@ I try to completely rework the program and make it better than before. You can h
 
 ## Installation
 
-If you just wanna use the programm, download the repo and launch the .jar file.
+If you just wanna use the programm, download the programm here: [SourceCraft-Reborn-Legacy](https://github.com/derLesh/SourceCraft-Reborn/releases/tag/v2.12)
 
 If you want to contribute, create a fork of this project and publish it as an Pull request
 
