@@ -15,7 +15,7 @@ I won't give any support for the legacy version. A new version is on the way.
 
 ---
 
-##My goal
+## My goal
 A new and better version of the beloved tool SourceCraft to convert Minecraft maps into Source Engine maps.
 
 I try to completely rework the program (currently in C#) and adding more features. You can help me via Pull Requests.
@@ -24,11 +24,11 @@ I try to completely rework the program (currently in C#) and adding more feature
 
 If you just wanna use the programm, download the programm here: [SourceCraft-Reborn-Legacy](https://github.com/derLesh/SourceCraft-Reborn/releases/tag/v2.12)
 
-If you want to contribute, create a fork of this project and publish it as an Pull request
+If you want to contribute, create a fork of this project and publish it as a Pull request
 
 ## Texture Pack
 
-Since there is no texture pack binded to this programm you have to download it by yourself
+Since there is no texture pack binded to this program you have to download it by yourself
 
 https://gamebanana.com/textures/3888
 
