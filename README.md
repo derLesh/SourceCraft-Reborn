@@ -52,6 +52,7 @@ https://creativecommons.org/licenses/by-nc-nd/3.0/
 ---
 
 Original author: GλRTΣИ
+
 GλRTΣИ's Steam account: https://steamcommunity.com/profiles/76561197982936315/
 
 If this continued version is a problem for the creator, please contact me if you are the original author 
