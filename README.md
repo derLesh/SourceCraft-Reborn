@@ -15,9 +15,10 @@ I won't give any support for the legacy version. A new version is on the way.
 
 ---
 
-A new and better version of the beloved tool SourceCraft to convert Minecraft maps into Source Engine maps
+##My goal
+A new and better version of the beloved tool SourceCraft to convert Minecraft maps into Source Engine maps.
 
-I try to completely rework the program and make it better than before. You can help me via Pull Requests
+I try to completely rework the program (currently in C#) and adding more features. You can help me via Pull Requests.
 
 ## Installation
 
@@ -50,6 +51,7 @@ https://creativecommons.org/licenses/by-nc-nd/3.0/
 
 ---
 
-I found no way to contact the original author. Minecraft Forum post is gone and there was no twitter/facebook account.
+Original author: GλRTΣИ
+GλRTΣИ's Steam account: https://steamcommunity.com/profiles/76561197982936315/
 
 If this continued version is a problem for the creator, please contact me if you are the original author 
