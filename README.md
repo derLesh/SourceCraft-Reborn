@@ -9,6 +9,11 @@
 ---
 
 ## Important information
+
+### Get SourceCraft 3.0
+Garten has published a new official verison of his SourceCraft Tool:
+https://www.minecraftforum.net/forums/mapping-and-modding-java-edition/minecraft-tools/3011571-sourcecraft-3-0-minecraft-to-source-engine
+
 The project is currently on hold. You are still able to download the legacy version and run it. But nothing changed in the code.
 
 I won't give any support for the legacy version. A new version is on the way.
